@@ -1,6 +1,8 @@
 package nl.tue.thermostat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,18 +10,12 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import java.lang.Math;
-import java.text.DecimalFormat;
-
-
 public class ThermostatOverview extends AppCompatActivity {
 
-    Double stemp=20.0;
+    int stemp=200;
     TextView temp;
     SeekBar tempbar;
-   // DecimalFormat df = new DecimalFormat("#.0");
-    int a;
-    int b;
+    View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +36,16 @@ public class ThermostatOverview extends AppCompatActivity {
         tempbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int  progress, boolean fromUser) {
-                b = progress;
-                if (progress < 5) {
-                    progress = 5;
-                    temp.setText(progress + ".0 \u2103");
-                    stemp = (double) progress;
+                if (progress < 50) {
+                    progress = 50;
+                    stemp = progress;
+                    temp.setText("5,0 \u2103");
                     tempbar.setProgress(progress);
                 } else {
-                    temp.setText(progress + ".0 \u2103");
-                    stemp = (double) progress;
+                    stemp = progress;
+                    int number = stemp/10;
+                    int decimal = stemp%10;
+                    temp.setText(number + ","+ decimal + " \u2103");
                 }
             }
             @Override
@@ -59,17 +56,17 @@ public class ThermostatOverview extends AppCompatActivity {
         bplus.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                stemp = (stemp + 0.1);
-                if (stemp > 30) {
-                    stemp = 30.0;
-                    temp.setText(stemp + ""); //df.format(stemp) + " \u2103");
-                    a = stemp.intValue();
-                    tempbar.setProgress(a);
+                stemp = (stemp + 1);
+                int number = stemp/10;
+                int decimal = stemp%10;
+                if (stemp > 300) {
+                    stemp = 300;
+                    temp.setText("30,0 \u2103");
+                    tempbar.setProgress(stemp);
+                    burn(view);
                 } else {
-                    temp.setText(stemp + ""); //df.format(stemp) + " \u2103");
-                    a = stemp.intValue();
-                    tempbar.setProgress(a);
-                    System.out.println(stemp);
+                    temp.setText(number + ","+ decimal + " \u2103");
+                    tempbar.setProgress(stemp);
                 }
             }
         });
@@ -77,20 +74,41 @@ public class ThermostatOverview extends AppCompatActivity {
         bminus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // System.out.println(stemp);
-                stemp = (stemp - 0.1);
-              //  System.out.println(stemp);
-                temp.setText(stemp + "");//df.format(stemp) + "\u2103");
-                System.out.println(stemp);
-                a = stemp.intValue();
-                System.out.println(stemp);
-                tempbar.setProgress(a);
-                System.out.println(stemp);
-                System.out.println(a);
-                System.out.println("b = " + b);
+                stemp = (stemp - 1);
+                if (stemp<50) {
+                    freeze(view);
+                }
+                int number = stemp/10;
+                int decimal = stemp%10;
+                temp.setText(number + ","+ decimal + " \u2103");
+                tempbar.setProgress(stemp);
             }
         });
-
-       // tempbar.setProgress(stemp);
+    }
+    public void freeze(View view) {
+        AlertDialog.Builder freeze = new AlertDialog.Builder(this);
+        freeze.setMessage("Do not freeze the pipes!! The minimum temperature is 5,0 \u2103")
+                .setTitle("Warning!")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        freeze.show();
+    }
+    public void burn(View view) {
+        AlertDialog.Builder burn = new AlertDialog.Builder(this);
+        burn.setMessage("Do not burn the pipes!! The maximum temperature is 30,0 \u2103")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setTitle("Warning!")
+                .create();
+        burn.show();
     }
 }
