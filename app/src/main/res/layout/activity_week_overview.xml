@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nl.tue.thermostat.WeekOverview"
+    android:background="#000000"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:gravity="center" >
+
+    <Button
+        style="@style/buttonchoosetemp"
+        android:id="@+id/setdaynight" />
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="8"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <Button
+        android:text="Monday"
+        style="@style/buttonmenuweek"
+        android:id="@+id/mon" />
+
+    <Button
+        android:text="Tuesday"
+        style="@style/buttonmenuweek"
+        android:id="@+id/tues" />
+
+    <Button
+        android:text="Wednesday"
+        style="@style/buttonmenuweek"
+        android:id="@+id/wednes" />
+
+    <Button
+        android:text="Thursday"
+        style="@style/buttonmenuweek"
+        android:id="@+id/thurs" />
+
+    <Button
+        android:text="Friday"
+        style="@style/buttonmenuweek"
+        android:id="@+id/fri" />
+
+    <Button
+        android:text="Saturday"
+        style="@style/buttonmenuweek"
+        android:id="@+id/satur" />
+
+    <Button
+        android:text="Sunday"
+        style="@style/buttonmenuweek"
+        android:id="@+id/sun" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
+
+    <Button
+        style="@style/buttonback"
+        android:id="@+id/backweek" />
+
+    </LinearLayout>
+
+</LinearLayout>
