@@ -5,10 +5,10 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ThermostatOverview"
+        <activity
+            android:name=".ThermostatOverview"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,15 +16,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".WeekOverview"
-            android:label="Week overview"/>
-        <activity android:name=".SetTemperature"
-            android:label="Set temperatures"/>
-        <activity android:name=".Monday"
-            android:label="Monday"/>
-        <activity android:name=".Tuesday"
-            android:label="Tuesday"></activity>
+        <activity
+            android:name=".WeekOverview"
+            android:label="Week overview" />
+        <activity
+            android:name=".SetTemperature"
+            android:label="Set temperatures" />
+        <activity
+            android:name=".Monday"
+            android:label="Monday" />
+        <activity
+            android:name=".Tuesday"
+            android:label="Tuesday" />
+        <activity android:name=".Wednesday"></activity>
     </application>
 
 </manifest>
