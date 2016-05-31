@@ -17,7 +17,7 @@ public class ThermostatOverview extends AppCompatActivity {
     Double stemp=20.0;
     TextView temp;
     SeekBar tempbar;
-    DecimalFormat df = new DecimalFormat("#.0");
+   // DecimalFormat df = new DecimalFormat("#.0");
     int a;
     int b;
 
@@ -62,11 +62,11 @@ public class ThermostatOverview extends AppCompatActivity {
                 stemp = (stemp + 0.1);
                 if (stemp > 30) {
                     stemp = 30.0;
-                    temp.setText(df.format(stemp) + " \u2103");
+                    temp.setText(stemp + ""); //df.format(stemp) + " \u2103");
                     a = stemp.intValue();
                     tempbar.setProgress(a);
                 } else {
-                    temp.setText(df.format(stemp) + " \u2103");
+                    temp.setText(stemp + ""); //df.format(stemp) + " \u2103");
                     a = stemp.intValue();
                     tempbar.setProgress(a);
                     System.out.println(stemp);
@@ -77,9 +77,13 @@ public class ThermostatOverview extends AppCompatActivity {
         bminus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+               // System.out.println(stemp);
                 stemp = (stemp - 0.1);
-                temp.setText(df.format(stemp) + "\u2103");
+              //  System.out.println(stemp);
+                temp.setText(stemp + "");//df.format(stemp) + "\u2103");
+                System.out.println(stemp);
                 a = stemp.intValue();
+                System.out.println(stemp);
                 tempbar.setProgress(a);
                 System.out.println(stemp);
                 System.out.println(a);
