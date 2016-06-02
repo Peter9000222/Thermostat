@@ -14,6 +14,7 @@ public class ThermostatOverview extends AppCompatActivity {
 
     int stemp=200;
     TextView temp;
+    TextView program;
     SeekBar tempbar;
     View view;
 
@@ -24,6 +25,7 @@ public class ThermostatOverview extends AppCompatActivity {
         Button bplus = (Button) findViewById(R.id.bplus);
         Button bminus = (Button) findViewById(R.id.bminus);
         temp = (TextView) findViewById(R.id.temp);
+        program = (TextView) findViewById(R.id.program);
         tempbar = (SeekBar) findViewById(R.id.tempbar);
         Button bsetprogram = (Button) findViewById(R.id.bsetprogram);
         bsetprogram.setOnClickListener(new View.OnClickListener(){
@@ -82,6 +84,20 @@ public class ThermostatOverview extends AppCompatActivity {
                 int decimal = stemp%10;
                 temp.setText(number + ","+ decimal + " \u2103");
                 tempbar.setProgress(stemp);
+            }
+        });
+        Button bweek = (Button) findViewById(R.id.bweek);
+        Button bconsant = (Button) findViewById(R.id.bconstant);
+        bweek.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                program.setText("Program: week");
+            }
+        });
+        bconsant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                program.setText("Program: constant");
             }
         });
     }

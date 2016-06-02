@@ -17,8 +17,8 @@
 
     <Button
         style="@style/buttonmenu"
-        android:text="Continue"
-        android:id="@+id/bcontinue" />
+        android:text="Constant"
+        android:id="@+id/bconstant" />
 
     <Button
         style="@style/buttonmenu"
@@ -32,27 +32,26 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_weight="9"
+        android:layout_weight="8"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center">
 
     <TextView
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
         android:textColor="#ffffff"
         android:text="The temperature is"
         android:id="@+id/textView2"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="20dp" />
 
     <Button
         style="@style/buttontemp"
         android:text="+"
-        android:id="@+id/bplus"
-        android:layout_marginTop="24dp" />
+        android:id="@+id/bplus" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -77,10 +76,26 @@
         android:indeterminate="false"
         android:progress="200"
         android:clickable="false"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:progressTint="#336699"
         android:thumbTint="#336699"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:textColor="#ffffff"
+            android:text="Program: week"
+            android:id="@+id/program" />
+        </LinearLayout>
 
 </LinearLayout>
 

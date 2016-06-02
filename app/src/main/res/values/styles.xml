@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -17,7 +17,7 @@
     <style name="buttonmenu">
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_width">125dp</item>
-        <item name="android:background">#336699</item>
+        <item name="android:background">@drawable/corners</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:textSize">20dp</item>
         <item name="android:layout_marginLeft">4dp</item>
@@ -25,12 +25,11 @@
     </style>
 
     <style name="buttontemp">
-        <item name="android:gravity">center_horizontal</item>
         <item name="android:layout_height">70dp</item>
         <item name="android:layout_width">70dp</item>
-        <item name="android:background">#336699</item>
+        <item name="android:background">@drawable/corners</item>
         <item name="android:textColor">#ffffff</item>
-        <item name="android:textSize">60dp</item>
+        <item name="android:textSize">50dp</item>
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginBottom">10dp</item>
     </style>
