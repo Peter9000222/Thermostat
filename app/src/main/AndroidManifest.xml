@@ -28,7 +28,21 @@
         <activity
             android:name=".Tuesday"
             android:label="Tuesday" />
-        <activity android:name=".Wednesday"></activity>
+        <activity
+            android:name=".Wednesday"
+            android:label="Wednesday" />
+        <activity
+            android:name=".Thursday"
+            android:label="Thursday" />
+        <activity
+            android:name=".Friday"
+            android:label="Friday" />
+        <activity
+            android:name=".Saturday"
+            android:label="Saturday"/>
+        <activity
+            android:name=".Sunday"
+            android:label="Sunday"></activity>
     </application>
 
 </manifest>

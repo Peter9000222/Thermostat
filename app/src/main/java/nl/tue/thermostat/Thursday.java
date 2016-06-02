@@ -6,14 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Wednesday extends AppCompatActivity {
+public class Thursday extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wednesday);
+        setContentView(R.layout.activity_thursday);
         Button backtemp = (Button) findViewById(R.id.backtemp);
-        backtemp.setOnClickListener(new View.OnClickListener() {
+        backtemp.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), WeekOverview.class);

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nl.tue.thermostat.Wednesday"
+    tools:context="nl.tue.thermostat.Sunday"
     android:orientation="vertical"
     android:background="#000000"
     android:weightSum="11">
@@ -20,8 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
-            android:textSize="29dp"
-            android:text="Set the Wednesday program."
+            android:textSize="30dp"
+            android:text="Set the Sunday program."
             android:id="@+id/textView" />
 
     </LinearLayout>
@@ -58,11 +58,11 @@
 
         <EditText
             style="@style/textedit"
-            android:id="@+id/day1wed" />
+            android:id="@+id/day1sun" />
 
         <EditText
             style="@style/textedit"
-            android:id="@+id/night1wed" />
+            android:id="@+id/night1sun" />
 
     </LinearLayout>
 
@@ -75,11 +75,11 @@
 
         <EditText
             style="@style/textedit"
-            android:id="@+id/day2wed" />
+            android:id="@+id/day2sun" />
 
         <EditText
             style="@style/textedit"
-            android:id="@+id/night2wed" />
+            android:id="@+id/night2sun" />
 
     </LinearLayout>
 
@@ -92,11 +92,11 @@
 
         <EditText
             style="@style/textedit"
-            android:id="@+id/day3wed" />
+            android:id="@+id/day3sun" />
 
         <EditText
             style="@style/textedit"
-            android:id="@+id/night3wed" />
+            android:id="@+id/night3sun" />
 
     </LinearLayout>
 
@@ -109,11 +109,11 @@
 
         <EditText
             style="@style/textedit"
-            android:id="@+id/day4wed" />
+            android:id="@+id/day4sun" />
 
         <EditText
             style="@style/textedit"
-            android:id="@+id/night4wed" />
+            android:id="@+id/night4sun" />
 
     </LinearLayout>
 
@@ -126,11 +126,11 @@
 
         <EditText
             style="@style/textedit"
-            android:id="@+id/day5wed" />
+            android:id="@+id/day5sun" />
 
         <EditText
             style="@style/textedit"
-            android:id="@+id/night5wed" />
+            android:id="@+id/night5sun" />
 
     </LinearLayout>
 

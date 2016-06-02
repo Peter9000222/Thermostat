@@ -44,5 +44,45 @@ public class WeekOverview extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Button wednes = (Button) findViewById(R.id.wednes);
+        wednes.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void  onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Wednesday.class);
+                startActivity(intent);
+            }
+        });
+        Button thurs = (Button) findViewById(R.id.thurs);
+        thurs.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Thursday.class);
+                startActivity(intent);
+            }
+        });
+        Button fri = (Button) findViewById(R.id.fri);
+        fri.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Friday.class);
+                startActivity(intent);
+            }
+        });
+        Button satur = (Button) findViewById(R.id.satur);
+        satur.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Saturday.class);
+                startActivity(intent);
+            }
+        });
+        Button sun = (Button) findViewById(R.id.sun);
+        sun.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Sunday.class);
+                startActivity(intent);
+            }
+        });
     }
 }
