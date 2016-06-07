@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import org.thermostatapp.util.*;
 
 public class ThermostatOverview extends AppCompatActivity {
 
@@ -21,6 +22,10 @@ public class ThermostatOverview extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        HeatingSystem.BASE_ADDRESS = "http://pcwin889.win.tue.nl/2id40-ws/19/";
+
+
         setContentView(R.layout.activity_thermostat_overview);
         Button bplus = (Button) findViewById(R.id.bplus);
         Button bminus = (Button) findViewById(R.id.bminus);
