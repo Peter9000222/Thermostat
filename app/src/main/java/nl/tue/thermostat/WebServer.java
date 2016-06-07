@@ -23,7 +23,7 @@ public class WebServer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.testing_ws);
+      //  setContentView(R.layout.testing_ws);
 
         /* Use BASE_ADDRESS dedicated for your group,
 		 * change 100 to you group number
@@ -31,10 +31,10 @@ public class WebServer extends AppCompatActivity {
         HeatingSystem.BASE_ADDRESS = "http://pcwin889.win.tue.nl/2id40-ws/19/";
         HeatingSystem.WEEK_PROGRAM_ADDRESS = HeatingSystem.BASE_ADDRESS + "/weekProgram";
 
-        getdata = (Button)findViewById(R.id.getdata);
-        putdata = (Button)findViewById(R.id.putdata);
-        data1 = (TextView)findViewById(R.id.data1);
-        data2 = (TextView)findViewById(R.id.data2);
+     //   getdata = (Button)findViewById(R.id.getdata);
+       // putdata = (Button)findViewById(R.id.putdata);
+       // data1 = (TextView)findViewById(R.id.data1);
+       // data2 = (TextView)findViewById(R.id.data2);
 
         /* When the user clicks on GET Data button the value of the corresponding parameter is read from the server
         and displayed in TextView data1
