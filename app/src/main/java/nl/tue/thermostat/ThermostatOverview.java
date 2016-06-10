@@ -2,6 +2,9 @@ package nl.tue.thermostat;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +21,10 @@ public class ThermostatOverview extends AppCompatActivity {
     TextView program;
     SeekBar tempbar;
     View view;
+    Button bweekprogram;
+    Boolean on = false;
+    Drawable weekon;
+    Drawable weekoff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +37,8 @@ public class ThermostatOverview extends AppCompatActivity {
         Button bplus = (Button) findViewById(R.id.bplus);
         Button bminus = (Button) findViewById(R.id.bminus);
         temp = (TextView) findViewById(R.id.temp);
-        program = (TextView) findViewById(R.id.program);
         tempbar = (SeekBar) findViewById(R.id.tempbar);
-        Button bsetprogram = (Button) findViewById(R.id.bsetprogram);
+        final Button bsetprogram = (Button) findViewById(R.id.bsetprogram);
         bsetprogram.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -91,18 +97,24 @@ public class ThermostatOverview extends AppCompatActivity {
                 tempbar.setProgress(stemp);
             }
         });
-        Button bweek = (Button) findViewById(R.id.bweek);
-        Button bconsant = (Button) findViewById(R.id.bconstant);
-        bweek.setOnClickListener(new View.OnClickListener() {
+        bweekprogram = (Button) findViewById(R.id.bweekprogram);
+        Resources res = getResources();
+        weekon = res.getDrawable(R.drawable.on);
+        weekoff = res.getDrawable(R.drawable.off);
+        bweekprogram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                program.setText("Program: week");
-            }
-        });
-        bconsant.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                program.setText("Program: constant");
+                if (on == false) {
+                    bweekprogram.setText("Week program on");
+                    bweekprogram.setBackground(weekon);
+                    on = true;
+                }
+                else {
+                    bweekprogram.setText("Week program off");
+                    bweekprogram.setBackground(weekoff);
+                    on = false;
+                }
+
             }
         });
     }

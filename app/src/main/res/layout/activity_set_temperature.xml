@@ -56,12 +56,42 @@
         android:gravity="center">
 
     <EditText
-        style="@style/textedit"
+        android:layout_marginLeft="40dp"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:text="20,0"
+        android:textAlignment="center"
+        android:background="#ffffff"
+        android:textSize="30dp"
         android:id="@+id/daytemp" />
 
-    <EditText
-        style="@style/textedit"
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&#x2103;"
+            android:textColor="#ffffff"
+            android:textSize="30dp"
+            android:id="@+id/textView3" />
+
+        <EditText
+            android:layout_marginLeft="50dp"
+            android:layout_width="90dp"
+            android:layout_height="45dp"
+            android:text="20,0"
+            android:textAlignment="center"
+            android:background="#ffffff"
+            android:textSize="30dp"
         android:id="@+id/nighttemp" />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&#x2103;"
+            android:textColor="#ffffff"
+            android:textSize="30dp"
+            android:id="@+id/textView4" />
 
     </LinearLayout>
 
@@ -72,13 +102,8 @@
         android:gravity="center_horizontal">
 
     <Button
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:background="#336699"
-        android:textColor="#ffffff"
-        android:textSize="25dp"
-        android:text="Set temperatures"
-        android:id="@+id/settemp" />
+        style="@style/buttonsettemp"
+        android:id="@+id/settempdaynight" />
 
     </LinearLayout>
 

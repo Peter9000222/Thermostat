@@ -15,6 +15,7 @@
     </style>
 
     <style name="buttonmenu">
+        <item name="android:textAllCaps">false</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_width">125dp</item>
         <item name="android:background">@drawable/corners</item>
@@ -25,6 +26,7 @@
     </style>
 
     <style name="buttontemp">
+        <item name="android:textAllCaps">false</item>
         <item name="android:layout_height">70dp</item>
         <item name="android:layout_width">70dp</item>
         <item name="android:background">@drawable/corners</item>
@@ -40,9 +42,10 @@
     </style>
 
     <style name="buttonmenuweek">
+        <item name="android:textAllCaps">false</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_width">200dp</item>
-        <item name="android:background">#336699</item>
+        <item name="android:background">@drawable/corners</item>
         <item name="android:textSize">25dp</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:layout_centerHorizontal">true</item>
@@ -50,9 +53,10 @@
     </style>
 
     <style name="buttonchoosetemp">
+        <item name="android:textAllCaps">false</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_width">300dp</item>
-        <item name="android:background">#336699</item>
+        <item name="android:background">@drawable/corners</item>
         <item name="android:textSize">30dp</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:text">Set temperatures</item>
@@ -65,9 +69,10 @@
     </style>
 
     <style name="buttonback">
+        <item name="android:textAllCaps">false</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_width">200dp</item>
-        <item name="android:background">#336699</item>
+        <item name="android:background">@drawable/corners</item>
         <item name="android:textSize">30dp</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:text">Back</item>
@@ -82,6 +87,17 @@
         <item name="android:text">00:00</item>
         <item name="android:layout_marginLeft">40dp</item>
         <item name="android:layout_marginRight">40dp</item>
+    </style>
+
+    <style name="buttonsettemp">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/corners</item>
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:text">Set temperatures</item>
     </style>
 
 </resources>
