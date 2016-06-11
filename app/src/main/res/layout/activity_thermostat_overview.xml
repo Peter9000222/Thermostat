@@ -4,7 +4,7 @@
     android:background="#000000"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="9"
+    android:weightSum="10"
     android:orientation="vertical"
     tools:context="nl.tue.thermostat.ThermostatOverview">
 
@@ -76,6 +76,14 @@
         android:progressTint="#336699"
         android:thumbTint="#336699"/>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textColor="#ffffff"
+        android:id="@+id/currentTime"
+        android:text="Test"/>
 
 </LinearLayout>
 
