@@ -16,23 +16,27 @@ import org.thermostatapp.util.*;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.*;
 
 public class ThermostatOverview extends AppCompatActivity {
 
-    int stemp=200;
-    TextView temp;
-    SeekBar tempbar;
+    int stemp;                  // value for temperature
+    TextView temp;              // temp display
+    SeekBar tempbar;            // process bar
     View view;
     Button bweekprogram, bsetprogram;
     Boolean on;                 // state is set by thread for program button
-    Drawable weekon;
-    Drawable weekoff;
+    Drawable weekon;            // layout program on
+    Drawable weekoff;           // layout program off
+    double currentTemp;         // value for temp
 
-    //time
+    //control window
     TimerTask taskTime;
-    String getParamTime;
-    int clockTime = 1000;
+    String getcurrentTemperature;
     TextView currentTime;
+
+    // current temp
+    int clockcurrentTemp = 2000;        // time in miliseconds 1000 is 1 second
 
     //program switch
     String getParamProgram;
@@ -46,7 +50,24 @@ public class ThermostatOverview extends AppCompatActivity {
         HeatingSystem.WEEK_PROGRAM_ADDRESS = HeatingSystem.BASE_ADDRESS + "/weekProgram";
 
         // temp display
+        // set display to current temp of system
         temp = (TextView) findViewById(R.id.temp);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    getcurrentTemperature  = HeatingSystem.get("targetTemperature");
+                    currentTemp = Double.parseDouble(getcurrentTemperature) * 10;
+                    stemp = (int)currentTemp;
+                    int number = stemp/10;
+                    int decimal = stemp%10;
+                    temp.setText(number + ","+ decimal + " \u2103");
+                    tempbar.setProgress(stemp);
+                } catch (Exception e) {                                         // catch error, always add this !!
+                    System.err.println("Error from getdata "+e);
+                }
+            }
+        }).start();
 
         // set programs button
         bsetprogram = (Button) findViewById(R.id.bsetprogram);
@@ -58,18 +79,43 @@ public class ThermostatOverview extends AppCompatActivity {
             }
         });
 
-        // temp bar
+        // temp bar sets progress to server and display
         tempbar = (SeekBar) findViewById(R.id.tempbar);
         tempbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int  progress, boolean fromUser) {
                 if (progress < 50) {
                     progress = 50;
+                    // put progress to server
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                HeatingSystem.put("targetTemperature", "5.0");
+                            } catch (Exception e) {
+                                System.err.println("Error from getdata " + e);
+                            }
+                        }}).start();
+                    // display progess temp in display
                     stemp = progress;
                     temp.setText("5,0 \u2103");
                     tempbar.setProgress(progress);
                 } else {
                     stemp = progress;
+                    // values to rewirte stemp to server format
+                    double server = (double)stemp / 10;
+                    final String tserver = Double.toString(server);
+                    // putt progess to server
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                HeatingSystem.put("targetTemperature", tserver);
+                            } catch (Exception e) {
+                                System.err.println("Error from getdata " + e);
+                            }
+                        }}).start();
+                    // rewrite stemp to format of display and display progress on display
                     int number = stemp/10;
                     int decimal = stemp%10;
                     temp.setText(number + ","+ decimal + " \u2103");
@@ -85,6 +131,7 @@ public class ThermostatOverview extends AppCompatActivity {
         bplus.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                // values to rewrite temp to display format
                 stemp = (stemp + 1);
                 int number = stemp/10;
                 int decimal = stemp%10;
@@ -93,7 +140,32 @@ public class ThermostatOverview extends AppCompatActivity {
                     temp.setText("30,0 \u2103");
                     tempbar.setProgress(stemp);
                     burn(view);
+                    // put temp to server
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                HeatingSystem.put("targetTemperature", "30.0");
+                            } catch (Exception e) {
+                                System.err.println("Error from getdata " + e);
+                            }
+                        }}).start();
                 } else {
+                    // rewrite temp for server format
+                    double server = (double)stemp;
+                    double tempserver = server / 10;
+                    final String tserver = Double.toString(tempserver);
+                    // put temp to server
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                HeatingSystem.put("targetTemperature", tserver);
+                            } catch (Exception e) {
+                                System.err.println("Error from getdata " + e);
+                            }
+                        }}).start();
+                    // display temp on display
                     temp.setText(number + ","+ decimal + " \u2103");
                     tempbar.setProgress(stemp);
                 }
@@ -109,14 +181,30 @@ public class ThermostatOverview extends AppCompatActivity {
                 if (stemp<50) {
                     freeze(view);
                 }
+                // rewrite temp for server format
+                double server = (double)stemp;
+                double tempserver = server / 10;
+                final String tserver = Double.toString(tempserver);
+                // put temp to server
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            HeatingSystem.put("targetTemperature", tserver);
+                        } catch (Exception e) {
+                            System.err.println("Error from getdata " + e);
+                        }
+                    }}).start();
+                // values to rewrite temp to display format
                 int number = stemp/10;
                 int decimal = stemp%10;
+                // display temp on display
                 temp.setText(number + ","+ decimal + " \u2103");
                 tempbar.setProgress(stemp);
             }
         });
 
-        // week program button
+        // week program button (program switch)
         bweekprogram = (Button) findViewById(R.id.bweekprogram);
         Resources res = getResources();
         weekon = res.getDrawable(R.drawable.on);                                 // layout on
@@ -178,9 +266,9 @@ public class ThermostatOverview extends AppCompatActivity {
             }
         }).start();
 
-        // test server with time
 
-        currentTime = (TextView) findViewById(R.id.currentTime);/*
+        // control window temps
+        currentTime = (TextView) findViewById(R.id.currentTime);
         taskTime = new TimerTask() {
             @Override
             public void run() {
@@ -188,11 +276,13 @@ public class ThermostatOverview extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            getParamTime = HeatingSystem.get("time");
+                            getcurrentTemperature = HeatingSystem.get("currentTemperature");
+                            currentTemp = Double.parseDouble(getcurrentTemperature) * 10;
+                            stemp = (int)currentTemp;
                             currentTime.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    currentTime.setText(getParamTime);
+                                    currentTime.setText(getcurrentTemperature);
                                 }
                             });
                         } catch (Exception e) {
@@ -203,8 +293,7 @@ public class ThermostatOverview extends AppCompatActivity {
             }
         };
         Timer timer = new Timer();
-        timer.schedule(taskTime, 0, clockTime);
-        */
+        timer.schedule(taskTime, 0, clockcurrentTemp);
     }
 
     // freeze message
