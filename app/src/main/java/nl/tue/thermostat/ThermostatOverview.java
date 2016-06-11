@@ -30,7 +30,7 @@ public class ThermostatOverview extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        HeatingSystem.BASE_ADDRESS = "http://pcwin889.win.tue.nl/2id40-ws/19/";
+        HeatingSystem.BASE_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/19";
 
 
         setContentView(R.layout.activity_thermostat_overview);
