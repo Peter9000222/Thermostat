@@ -6,7 +6,7 @@
     tools:context="nl.tue.thermostat.Monday"
     android:orientation="vertical"
     android:background="#000000"
-    android:weightSum="12">
+    android:weightSum="11">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,6 +56,10 @@
         android:orientation="horizontal"
         android:gravity="center">
 
+    <Switch
+        style="@style/switchPrograms"
+        android:id="@+id/switchday1mon" />
+
     <EditText
         style="@style/textedit"
         android:id="@+id/day1mon" />
@@ -64,7 +68,12 @@
         style="@style/textedit"
         android:id="@+id/night1mon" />
 
+    <Switch
+        style="@style/switchPrograms"
+        android:id="@+id/switchnight1mon" />
+
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -72,6 +81,10 @@
         android:layout_weight="1"
         android:orientation="horizontal"
         android:gravity="center">
+
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchday2mon" />
 
         <EditText
             style="@style/textedit"
@@ -81,7 +94,13 @@
             style="@style/textedit"
             android:id="@+id/night2mon" />
 
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchnight2mon" />
+
     </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,6 +108,10 @@
         android:layout_weight="1"
         android:orientation="horizontal"
         android:gravity="center">
+
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchday3mon" />
 
         <EditText
             style="@style/textedit"
@@ -98,6 +121,10 @@
             style="@style/textedit"
             android:id="@+id/night3mon" />
 
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchnight3mon" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -106,6 +133,10 @@
         android:layout_weight="1"
         android:orientation="horizontal"
         android:gravity="center">
+
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchday4mon" />
 
         <EditText
             style="@style/textedit"
@@ -115,6 +146,10 @@
             style="@style/textedit"
             android:id="@+id/night4mon" />
 
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchnight4mon" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -124,6 +159,10 @@
         android:orientation="horizontal"
         android:gravity="center">
 
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchday5mon" />
+
         <EditText
             style="@style/textedit"
             android:id="@+id/day5mon" />
@@ -132,6 +171,10 @@
             style="@style/textedit"
             android:id="@+id/night5mon" />
 
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchnight5mon" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -141,25 +184,20 @@
         android:gravity="center_horizontal">
 
         <Button
-            style="@style/buttonsettemp"
-            android:id="@+id/settempmon" />
+            style="@style/buttonsettime"
+            android:id="@+id/settimemon" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:gravity="center_horizontal">
 
         <Button
             style="@style/buttonback"
             android:id="@+id/backtemp" />
-
-        <TimePicker
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/timePicker" />
 
     </LinearLayout>
 

@@ -64,8 +64,8 @@
     </style>
 
     <style name="margin">
-        <item name="android:layout_marginLeft">40dp</item>
-        <item name="android:layout_marginRight">40dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
     </style>
 
     <style name="buttonback">
@@ -79,17 +79,19 @@
     </style>
 
     <style name="textedit">
+        <item name="android:focusable">false</item>
+        <item name="android:inputType">time</item>
         <item name="android:layout_width">90dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:background">#ffffff</item>
         <item name="android:textSize">30dp</item>
         <item name="android:textAlignment">center</item>
         <item name="android:text">00:00</item>
-        <item name="android:layout_marginLeft">40dp</item>
-        <item name="android:layout_marginRight">40dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
     </style>
 
-    <style name="buttonsettemp">
+    <style name="buttonsettime">
         <item name="android:textAllCaps">false</item>
         <item name="android:background">@drawable/corners</item>
         <item name="android:layout_width">300dp</item>
@@ -97,7 +99,12 @@
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:textSize">25dp</item>
         <item name="android:textColor">#ffffff</item>
-        <item name="android:text">Set temperatures</item>
+        <item name="android:text">Set times</item>
+    </style>
+
+    <style name="switchPrograms">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
 </resources>
