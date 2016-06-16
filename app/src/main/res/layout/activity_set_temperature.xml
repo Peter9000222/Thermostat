@@ -59,11 +59,11 @@
         android:layout_marginLeft="40dp"
         android:layout_width="90dp"
         android:layout_height="45dp"
-        android:text="20,0"
         android:textAlignment="center"
         android:background="#ffffff"
         android:textSize="30dp"
-        android:id="@+id/daytemp" />
+        android:id="@+id/daytemp"
+        android:inputType="numberDecimal"/>
 
         <TextView
             android:layout_marginLeft="10dp"
@@ -78,11 +78,11 @@
             android:layout_marginLeft="50dp"
             android:layout_width="90dp"
             android:layout_height="45dp"
-            android:text="20,0"
             android:textAlignment="center"
             android:background="#ffffff"
             android:textSize="30dp"
-        android:id="@+id/nighttemp" />
+            android:id="@+id/nighttemp"
+            android:inputType="numberDecimal"/>
 
         <TextView
             android:layout_marginLeft="10dp"
