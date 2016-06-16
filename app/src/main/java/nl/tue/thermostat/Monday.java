@@ -24,7 +24,7 @@ public class Monday extends AppCompatActivity {
             }
         });
 
-        day1mon = (EditText) findViewById(R.id.day1mon);
+        day1mon = (EditText) findViewById(R.id.day1tues);
         day1mon.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
