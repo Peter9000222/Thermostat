@@ -103,6 +103,7 @@
 
     <Button
         style="@style/buttonsettime"
+        android:text="Set temperatures"
         android:id="@+id/settempdaynight" />
 
     </LinearLayout>

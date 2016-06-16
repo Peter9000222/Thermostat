@@ -56,6 +56,10 @@
         android:orientation="horizontal"
         android:gravity="center">
 
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchday1fri" />
+
         <EditText
             style="@style/textedit"
             android:id="@+id/day1fri" />
@@ -63,6 +67,10 @@
         <EditText
             style="@style/textedit"
             android:id="@+id/night1fri" />
+
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchnight1fri" />
 
     </LinearLayout>
 
@@ -72,6 +80,10 @@
         android:layout_weight="1"
         android:orientation="horizontal"
         android:gravity="center">
+
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchday2fri" />
 
         <EditText
             style="@style/textedit"
@@ -81,6 +93,10 @@
             style="@style/textedit"
             android:id="@+id/night2fri" />
 
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchnight2fri" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -89,6 +105,10 @@
         android:layout_weight="1"
         android:orientation="horizontal"
         android:gravity="center">
+
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchday3fri" />
 
         <EditText
             style="@style/textedit"
@@ -98,6 +118,10 @@
             style="@style/textedit"
             android:id="@+id/night3fri" />
 
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchnight3fri" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -106,6 +130,10 @@
         android:layout_weight="1"
         android:orientation="horizontal"
         android:gravity="center">
+
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchday4fri" />
 
         <EditText
             style="@style/textedit"
@@ -115,6 +143,10 @@
             style="@style/textedit"
             android:id="@+id/night4fri" />
 
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchnight4fri" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -124,6 +156,10 @@
         android:orientation="horizontal"
         android:gravity="center">
 
+        <Switch
+            style="@style/switchPrograms"
+            android:id="@+id/switchday5fri" />
+
         <EditText
             style="@style/textedit"
             android:id="@+id/day5fri" />
@@ -131,6 +167,10 @@
         <EditText
             style="@style/textedit"
             android:id="@+id/night5fri" />
+
+        <Switch
+        style="@style/switchPrograms"
+        android:id="@+id/switchnight5fri" />
 
     </LinearLayout>
 
