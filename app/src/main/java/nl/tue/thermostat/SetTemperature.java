@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.thermostatapp.util.HeatingSystem;
 
@@ -106,6 +107,8 @@ public class SetTemperature extends AppCompatActivity {
                         }
                     }
                 }).start();
+                Toast.makeText(getApplicationContext(),
+                        "Temperatures are set.", Toast.LENGTH_LONG).show();
             }
         });
     }
