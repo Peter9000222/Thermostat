@@ -42,6 +42,8 @@ public class Monday extends AppCompatActivity {
             }
         });
 
+
+
         //copy
         Button settimemon = (Button) findViewById(R.id.settimemon);
 
@@ -55,6 +57,8 @@ public class Monday extends AppCompatActivity {
         switchnight3mon = (Switch) findViewById(R.id.switchnight3mon);
         switchnight4mon = (Switch) findViewById(R.id.switchnight4mon);
         switchnight5mon = (Switch) findViewById(R.id.switchnight5mon);
+
+
 
 
         new Thread(new Runnable() {
@@ -138,51 +142,58 @@ public class Monday extends AppCompatActivity {
                             nights++;
                         }
                     }
-                    time = wpgm.get(2).getTime();
-                    state = wpgm.get(2).getState();
-                    type = wpgm.get(2).getType();
                     if (type.equals("day")) {
                         if (days == 1) {
                             day1mon.setText(time);
-                            switchnight1mon.setTag(state);
-                            switchnight1mon.setChecked(state);
+                            switchday1mon.setTag(state);
+                            switchday1mon.setChecked(state);
                             days++;
                         } else if (days == 2) {
                             day2mon.setText(time);
-                            switchnight2mon.setTag(state);
-                            switchnight2mon.setChecked(state);
+                            switchday2mon.setTag(state);
+                            switchday2mon.setChecked(state);
                             days++;
                         } else if (days == 3) {
                             day3mon.setText(time);
-                            switchnight3mon.setTag(state);
-                            switchnight3mon.setChecked(state);
+                            switchday3mon.setTag(state);
+                            switchday3mon.setChecked(state);
                             days++;
                         } else if (days == 4) {
                             day4mon.setText(time);
-                            switchnight4mon.setTag(state);
-                            switchnight4mon.setChecked(state);
+                            switchday4mon.setTag(state);
+                            switchday4mon.setChecked(state);
                             days++;
                         }else if (days == 5) {
                             day5mon.setText(time);
-                            switchnight5mon.setTag(state);
-                            switchnight5mon.setChecked(state);
+                            switchday5mon.setTag(state);
+                            switchday5mon.setChecked(state);
                             days++;
                         }
                     } else {
                         if (nights == 1) {
                             night1mon.setText(time);
+                            switchnight1mon.setTag(state);
+                            switchnight1mon.setChecked(state);
                             nights++;
                         } else if (nights == 2) {
                             night2mon.setText(time);
+                            switchnight2mon.setTag(state);
+                            switchnight2mon.setChecked(state);
                             nights++;
                         } else if (nights == 3) {
                             night3mon.setText(time);
+                            switchnight3mon.setTag(state);
+                            switchnight3mon.setChecked(state);
                             nights++;
                         } else if (nights == 4) {
                             night4mon.setText(time);
+                            switchnight4mon.setTag(state);
+                            switchnight4mon.setChecked(state);
                             nights++;
                         } else if (nights == 5) {
                             night5mon.setText(time);
+                            switchnight5mon.setTag(state);
+                            switchnight5mon.setChecked(state);
                             nights++;
                         }
                     }
@@ -192,35 +203,55 @@ public class Monday extends AppCompatActivity {
                     if (type.equals("day")) {
                         if (days == 1) {
                             day1mon.setText(time);
+                            switchday1mon.setTag(state);
+                            switchday1mon.setChecked(state);
                             days++;
                         } else if (days == 2) {
                             day2mon.setText(time);
+                            switchday2mon.setTag(state);
+                            switchday2mon.setChecked(state);
                             days++;
                         } else if (days == 3) {
                             day3mon.setText(time);
+                            switchday3mon.setTag(state);
+                            switchday3mon.setChecked(state);
                             days++;
                         } else if (days == 4) {
                             day4mon.setText(time);
+                            switchday4mon.setTag(state);
+                            switchday4mon.setChecked(state);
                             days++;
                         }else if (days == 5) {
                             day5mon.setText(time);
+                            switchday5mon.setTag(state);
+                            switchday5mon.setChecked(state);
                             days++;
                         }
                     } else {
                         if (nights == 1) {
                             night1mon.setText(time);
+                            switchnight1mon.setTag(state);
+                            switchnight1mon.setChecked(state);
                             nights++;
                         } else if (nights == 2) {
                             night2mon.setText(time);
+                            switchnight2mon.setTag(state);
+                            switchnight2mon.setChecked(state);
                             nights++;
                         } else if (nights == 3) {
                             night3mon.setText(time);
+                            switchnight3mon.setTag(state);
+                            switchnight3mon.setChecked(state);
                             nights++;
                         } else if (nights == 4) {
                             night4mon.setText(time);
+                            switchnight4mon.setTag(state);
+                            switchnight4mon.setChecked(state);
                             nights++;
                         } else if (nights == 5) {
                             night5mon.setText(time);
+                            switchnight5mon.setTag(state);
+                            switchnight5mon.setChecked(state);
                             nights++;
                         }
                     }
@@ -230,35 +261,55 @@ public class Monday extends AppCompatActivity {
                     if (type.equals("day")) {
                         if (days == 1) {
                             day1mon.setText(time);
+                            switchday1mon.setTag(state);
+                            switchday1mon.setChecked(state);
                             days++;
                         } else if (days == 2) {
                             day2mon.setText(time);
+                            switchday2mon.setTag(state);
+                            switchday2mon.setChecked(state);
                             days++;
                         } else if (days == 3) {
                             day3mon.setText(time);
+                            switchday3mon.setTag(state);
+                            switchday3mon.setChecked(state);
                             days++;
                         } else if (days == 4) {
                             day4mon.setText(time);
+                            switchday4mon.setTag(state);
+                            switchday4mon.setChecked(state);
                             days++;
                         }else if (days == 5) {
                             day5mon.setText(time);
+                            switchday5mon.setTag(state);
+                            switchday5mon.setChecked(state);
                             days++;
                         }
                     } else {
                         if (nights == 1) {
                             night1mon.setText(time);
+                            switchnight1mon.setTag(state);
+                            switchnight1mon.setChecked(state);
                             nights++;
                         } else if (nights == 2) {
                             night2mon.setText(time);
+                            switchnight2mon.setTag(state);
+                            switchnight2mon.setChecked(state);
                             nights++;
                         } else if (nights == 3) {
                             night3mon.setText(time);
+                            switchnight3mon.setTag(state);
+                            switchnight3mon.setChecked(state);
                             nights++;
                         } else if (nights == 4) {
                             night4mon.setText(time);
+                            switchnight4mon.setTag(state);
+                            switchnight4mon.setChecked(state);
                             nights++;
                         } else if (nights == 5) {
                             night5mon.setText(time);
+                            switchnight5mon.setTag(state);
+                            switchnight5mon.setChecked(state);
                             nights++;
                         }
                     }
@@ -268,35 +319,55 @@ public class Monday extends AppCompatActivity {
                     if (type.equals("day")) {
                         if (days == 1) {
                             day1mon.setText(time);
+                            switchday1mon.setTag(state);
+                            switchday1mon.setChecked(state);
                             days++;
                         } else if (days == 2) {
                             day2mon.setText(time);
+                            switchday2mon.setTag(state);
+                            switchday2mon.setChecked(state);
                             days++;
                         } else if (days == 3) {
                             day3mon.setText(time);
+                            switchday3mon.setTag(state);
+                            switchday3mon.setChecked(state);
                             days++;
                         } else if (days == 4) {
                             day4mon.setText(time);
+                            switchday4mon.setTag(state);
+                            switchday4mon.setChecked(state);
                             days++;
                         }else if (days == 5) {
                             day5mon.setText(time);
+                            switchday5mon.setTag(state);
+                            switchday5mon.setChecked(state);
                             days++;
                         }
                     } else {
                         if (nights == 1) {
                             night1mon.setText(time);
+                            switchnight1mon.setTag(state);
+                            switchnight1mon.setChecked(state);
                             nights++;
                         } else if (nights == 2) {
                             night2mon.setText(time);
+                            switchnight2mon.setTag(state);
+                            switchnight2mon.setChecked(state);
                             nights++;
                         } else if (nights == 3) {
                             night3mon.setText(time);
+                            switchnight3mon.setTag(state);
+                            switchnight3mon.setChecked(state);
                             nights++;
                         } else if (nights == 4) {
                             night4mon.setText(time);
+                            switchnight4mon.setTag(state);
+                            switchnight4mon.setChecked(state);
                             nights++;
                         } else if (nights == 5) {
                             night5mon.setText(time);
+                            switchnight5mon.setTag(state);
+                            switchnight5mon.setChecked(state);
                             nights++;
                         }
                     }
@@ -306,35 +377,55 @@ public class Monday extends AppCompatActivity {
                     if (type.equals("day")) {
                         if (days == 1) {
                             day1mon.setText(time);
+                            switchday1mon.setTag(state);
+                            switchday1mon.setChecked(state);
                             days++;
                         } else if (days == 2) {
                             day2mon.setText(time);
+                            switchday2mon.setTag(state);
+                            switchday2mon.setChecked(state);
                             days++;
                         } else if (days == 3) {
                             day3mon.setText(time);
+                            switchday3mon.setTag(state);
+                            switchday3mon.setChecked(state);
                             days++;
                         } else if (days == 4) {
                             day4mon.setText(time);
+                            switchday4mon.setTag(state);
+                            switchday4mon.setChecked(state);
                             days++;
                         }else if (days == 5) {
                             day5mon.setText(time);
+                            switchday5mon.setTag(state);
+                            switchday5mon.setChecked(state);
                             days++;
                         }
                     } else {
                         if (nights == 1) {
                             night1mon.setText(time);
+                            switchnight1mon.setTag(state);
+                            switchnight1mon.setChecked(state);
                             nights++;
                         } else if (nights == 2) {
                             night2mon.setText(time);
+                            switchnight2mon.setTag(state);
+                            switchnight2mon.setChecked(state);
                             nights++;
                         } else if (nights == 3) {
                             night3mon.setText(time);
+                            switchnight3mon.setTag(state);
+                            switchnight3mon.setChecked(state);
                             nights++;
                         } else if (nights == 4) {
                             night4mon.setText(time);
+                            switchnight4mon.setTag(state);
+                            switchnight4mon.setChecked(state);
                             nights++;
                         } else if (nights == 5) {
                             night5mon.setText(time);
+                            switchnight5mon.setTag(state);
+                            switchnight5mon.setChecked(state);
                             nights++;
                         }
                     }
@@ -344,35 +435,55 @@ public class Monday extends AppCompatActivity {
                     if (type.equals("day")) {
                         if (days == 1) {
                             day1mon.setText(time);
+                            switchday1mon.setTag(state);
+                            switchday1mon.setChecked(state);
                             days++;
                         } else if (days == 2) {
                             day2mon.setText(time);
+                            switchday2mon.setTag(state);
+                            switchday2mon.setChecked(state);
                             days++;
                         } else if (days == 3) {
                             day3mon.setText(time);
+                            switchday3mon.setTag(state);
+                            switchday3mon.setChecked(state);
                             days++;
                         } else if (days == 4) {
                             day4mon.setText(time);
+                            switchday4mon.setTag(state);
+                            switchday4mon.setChecked(state);
                             days++;
                         }else if (days == 5) {
                             day5mon.setText(time);
+                            switchday5mon.setTag(state);
+                            switchday5mon.setChecked(state);
                             days++;
                         }
                     } else {
                         if (nights == 1) {
                             night1mon.setText(time);
+                            switchnight1mon.setTag(state);
+                            switchnight1mon.setChecked(state);
                             nights++;
                         } else if (nights == 2) {
                             night2mon.setText(time);
+                            switchnight2mon.setTag(state);
+                            switchnight2mon.setChecked(state);
                             nights++;
                         } else if (nights == 3) {
                             night3mon.setText(time);
+                            switchnight3mon.setTag(state);
+                            switchnight3mon.setChecked(state);
                             nights++;
                         } else if (nights == 4) {
                             night4mon.setText(time);
+                            switchnight4mon.setTag(state);
+                            switchnight4mon.setChecked(state);
                             nights++;
                         } else if (nights == 5) {
                             night5mon.setText(time);
+                            switchnight5mon.setTag(state);
+                            switchnight5mon.setChecked(state);
                             nights++;
                         }
                     }
@@ -382,35 +493,55 @@ public class Monday extends AppCompatActivity {
                     if (type.equals("day")) {
                         if (days == 1) {
                             day1mon.setText(time);
+                            switchday1mon.setTag(state);
+                            switchday1mon.setChecked(state);
                             days++;
                         } else if (days == 2) {
                             day2mon.setText(time);
+                            switchday2mon.setTag(state);
+                            switchday2mon.setChecked(state);
                             days++;
                         } else if (days == 3) {
                             day3mon.setText(time);
+                            switchday3mon.setTag(state);
+                            switchday3mon.setChecked(state);
                             days++;
                         } else if (days == 4) {
                             day4mon.setText(time);
+                            switchday4mon.setTag(state);
+                            switchday4mon.setChecked(state);
                             days++;
                         }else if (days == 5) {
                             day5mon.setText(time);
+                            switchday5mon.setTag(state);
+                            switchday5mon.setChecked(state);
                             days++;
                         }
                     } else {
                         if (nights == 1) {
                             night1mon.setText(time);
+                            switchnight1mon.setTag(state);
+                            switchnight1mon.setChecked(state);
                             nights++;
                         } else if (nights == 2) {
                             night2mon.setText(time);
+                            switchnight2mon.setTag(state);
+                            switchnight2mon.setChecked(state);
                             nights++;
                         } else if (nights == 3) {
                             night3mon.setText(time);
+                            switchnight3mon.setTag(state);
+                            switchnight3mon.setChecked(state);
                             nights++;
                         } else if (nights == 4) {
                             night4mon.setText(time);
+                            switchnight4mon.setTag(state);
+                            switchnight4mon.setChecked(state);
                             nights++;
                         } else if (nights == 5) {
                             night5mon.setText(time);
+                            switchnight5mon.setTag(state);
+                            switchnight5mon.setChecked(state);
                             nights++;
                         }
                     }
@@ -420,35 +551,55 @@ public class Monday extends AppCompatActivity {
                     if (type.equals("day")) {
                         if (days == 1) {
                             day1mon.setText(time);
+                            switchday1mon.setTag(state);
+                            switchday1mon.setChecked(state);
                             days++;
                         } else if (days == 2) {
                             day2mon.setText(time);
+                            switchday2mon.setTag(state);
+                            switchday2mon.setChecked(state);
                             days++;
                         } else if (days == 3) {
                             day3mon.setText(time);
+                            switchday3mon.setTag(state);
+                            switchday3mon.setChecked(state);
                             days++;
                         } else if (days == 4) {
                             day4mon.setText(time);
+                            switchday4mon.setTag(state);
+                            switchday4mon.setChecked(state);
                             days++;
                         }else if (days == 5) {
                             day5mon.setText(time);
+                            switchday5mon.setTag(state);
+                            switchday5mon.setChecked(state);
                             days++;
                         }
                     } else {
                         if (nights == 1) {
                             night1mon.setText(time);
+                            switchnight1mon.setTag(state);
+                            switchnight1mon.setChecked(state);
                             nights++;
                         } else if (nights == 2) {
                             night2mon.setText(time);
+                            switchnight2mon.setTag(state);
+                            switchnight2mon.setChecked(state);
                             nights++;
                         } else if (nights == 3) {
                             night3mon.setText(time);
+                            switchnight3mon.setTag(state);
+                            switchnight3mon.setChecked(state);
                             nights++;
                         } else if (nights == 4) {
                             night4mon.setText(time);
+                            switchnight4mon.setTag(state);
+                            switchnight4mon.setChecked(state);
                             nights++;
                         } else if (nights == 5) {
                             night5mon.setText(time);
+                            switchnight5mon.setTag(state);
+                            switchnight5mon.setChecked(state);
                             nights++;
                         }
                     }

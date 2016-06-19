@@ -181,7 +181,7 @@
 
         <Button
             style="@style/buttonsettime"
-            android:id="@+id/settemptues" />
+            android:id="@+id/settimetues" />
 
     </LinearLayout>
 
