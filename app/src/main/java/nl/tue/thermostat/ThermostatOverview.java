@@ -279,7 +279,7 @@ public class ThermostatOverview extends AppCompatActivity {
         });
 
         // current temperature text
-        
+
         currentTempText = (TextView) findViewById(R.id.currentTempText);
 
         // control window temps
