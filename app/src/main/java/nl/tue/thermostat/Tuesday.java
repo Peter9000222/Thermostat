@@ -1,5 +1,6 @@
 package nl.tue.thermostat;
 
+//
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
