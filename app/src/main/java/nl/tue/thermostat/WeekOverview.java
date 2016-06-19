@@ -6,12 +6,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import org.thermostatapp.util.HeatingSystem;
+
 public class WeekOverview extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week_overview);
+
+        HeatingSystem.BASE_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/19";
+        HeatingSystem.WEEK_PROGRAM_ADDRESS = HeatingSystem.BASE_ADDRESS + "/weekProgram";
+
         Button backweek = (Button) findViewById(R.id.backweek);
         backweek.setOnClickListener(new View.OnClickListener(){
             @Override

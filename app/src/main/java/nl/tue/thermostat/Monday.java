@@ -622,7 +622,7 @@ public class Monday extends AppCompatActivity {
                             // Get the week program
                             WeekProgram wpg = HeatingSystem.getWeekProgram();
                             // Set the week program to default
-                            wpg.setDefault();
+                            //wpg.setDefault();
                             wpg.data.get("Monday").set(0, new SwitchHS("night", switchnight1mon.isChecked(), night1mon.getText().toString()));
                             wpg.data.get("Monday").set(1, new SwitchHS("night", switchnight2mon.isChecked(), night2mon.getText().toString()));
                             wpg.data.get("Monday").set(2, new SwitchHS("night", switchnight3mon.isChecked(), night3mon.getText().toString()));

@@ -1,5 +1,5 @@
 package nl.tue.thermostat;
-
+//
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
@@ -36,8 +36,6 @@ public class Saturday extends AppCompatActivity {
             }
         });
 
-
-
         HeatingSystem.BASE_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/19";
         HeatingSystem.WEEK_PROGRAM_ADDRESS = HeatingSystem.BASE_ADDRESS + "/weekProgram";
 
@@ -66,7 +64,7 @@ public class Saturday extends AppCompatActivity {
                             // Get the week program
                             WeekProgram wpg = HeatingSystem.getWeekProgram();
                             // Set the week program to default
-                            wpg.setDefault();
+                            // wpg.setDefault();
                             wpg.data.get("Saturday").set(0, new SwitchHS("night", switchnight1satur.isChecked(), night1satur.getText().toString()));
                             wpg.data.get("Saturday").set(1, new SwitchHS("night", switchnight2satur.isChecked(), night2satur.getText().toString()));
                             wpg.data.get("Saturday").set(2, new SwitchHS("night", switchnight3satur.isChecked(), night3satur.getText().toString()));
