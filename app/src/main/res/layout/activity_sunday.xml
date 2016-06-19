@@ -182,7 +182,7 @@
 
         <Button
             style="@style/buttonsettime"
-            android:id="@+id/settempsun" />
+            android:id="@+id/settimesun" />
 
     </LinearLayout>
 

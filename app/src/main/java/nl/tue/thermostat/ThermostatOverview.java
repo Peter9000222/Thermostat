@@ -27,7 +27,7 @@ public class ThermostatOverview extends AppCompatActivity {
     SeekBar tempbar;            // process bar
     View view;
     Button bweekprogram, bsetprogram;
-    Boolean on = false;         // state is set to false by default for week program button
+    Boolean on ;         // state is set to false by default for week program button
     Drawable weekon;            // layout program on
     Drawable weekoff;           // layout program off
     double currentTemp;         // value for temp
@@ -68,22 +68,24 @@ public class ThermostatOverview extends AppCompatActivity {
                 try {
                     getParamProgram  = HeatingSystem.get("weekProgramState");   // get program state
                     currentTime.setText(getParamProgram);                       // set program state to string
-                    if (getParamProgram.equals("off")) {                        // if program state is "off"
+                   if (getParamProgram.equals("off")) {                        // if program state is "off"
                         bweekprogram.setBackground(weekoff);                    // set program button layout to off
                         bweekprogram.setText("Week program is off");               // set program button text to "off"
                         bweekprogram.setPaintFlags(0);
                         on = false;                                             // remember state
-                    } else {                                                    // if program state is "on"
+                   } else {                                                    // if program state is "on"
                         bweekprogram.setBackground(weekon);                     // set program button layout to on
                         bweekprogram.setText("Week program is on");
                         bweekprogram.setPaintFlags(bweekprogram.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG); // set program button text to "on"
                         on = true;                                              // remember state
-                    }
+                   }
                 } catch (Exception e) {                                         // catch error, always add this !!
                     System.err.println("Error from getdata "+e);
                 }
             }
         }).start();
+
+
 
         // temp display
         // set display to current temp of system
