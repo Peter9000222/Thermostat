@@ -40,7 +40,7 @@ public class Friday extends AppCompatActivity {
         HeatingSystem.BASE_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/19";
         HeatingSystem.WEEK_PROGRAM_ADDRESS = HeatingSystem.BASE_ADDRESS + "/weekProgram";
 
-        Button settimetues = (Button) findViewById(R.id.settimetues);
+        Button settimefri = (Button) findViewById(R.id.settimefri);
 
         switchday1fri = (Switch) findViewById(R.id.switchday1fri);
         switchday2fri = (Switch) findViewById(R.id.switchday2fri);
@@ -53,7 +53,7 @@ public class Friday extends AppCompatActivity {
         switchnight4fri = (Switch) findViewById(R.id.switchnight4fri);
         switchnight5fri = (Switch) findViewById(R.id.switchnight5fri);
 
-        settimetues.setOnClickListener(new View.OnClickListener(){
+        settimefri.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
 
