@@ -32,6 +32,7 @@ public class ThermostatOverview extends AppCompatActivity {
     Drawable weekoff;           // layout program off
     double currentTemp;         // value for temp
     TextView currentTempText;   // Text for current temperature
+    TextView degree;            // Text for degree C
 
     //control window
     TimerTask taskTime;
@@ -285,6 +286,9 @@ public class ThermostatOverview extends AppCompatActivity {
 
         // current temperature text
         currentTempText = (TextView) findViewById(R.id.currentTempText);
+
+        // current temperature text
+        degree = (TextView) findViewById(R.id.degree);
 
         // control window temps
         currentTime = (TextView) findViewById(R.id.currentTime);
