@@ -257,7 +257,7 @@ public class ThermostatOverview extends AppCompatActivity {
                             System.err.println("Error from getdata " + e);
                         }
                     }}).start();
-                    bweekprogram.setText("Week program on");                     // set program button text to "off"
+                    bweekprogram.setText("Week program is on");                     // set program button text to "off"
                     bweekprogram.setBackground(weekon);                          // set program button layout to on
                     on = true;
                 }
@@ -271,7 +271,7 @@ public class ThermostatOverview extends AppCompatActivity {
                               System.err.println("Error from getdata " + e);
                          }
                     }}).start();
-                    bweekprogram.setText("Week program off");                   // set program button text to "on"
+                    bweekprogram.setText("Week program is off");                   // set program button text to "on"
                     bweekprogram.setBackground(weekoff);                        // set program button layout to off
                     on = false;
                 }
@@ -279,7 +279,6 @@ public class ThermostatOverview extends AppCompatActivity {
         });
 
         // current temperature text
-
         currentTempText = (TextView) findViewById(R.id.currentTempText);
 
         // control window temps
