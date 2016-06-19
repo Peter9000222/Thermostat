@@ -35,6 +35,7 @@ public class ThermostatOverview extends AppCompatActivity {
     TimerTask taskTime;
     String getcurrentTemperature;
     TextView currentTime;
+    Timer timer = new Timer();
 
     // current temp
     int clockcurrentTemp = 2000;        // time in miliseconds 1000 is 1 second
@@ -82,8 +83,10 @@ public class ThermostatOverview extends AppCompatActivity {
         bsetprogram.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                timer.cancel();
                 Intent intent = new Intent(view.getContext(), WeekOverview.class);
                 startActivity(intent);
+
             }
         });
 
@@ -300,7 +303,7 @@ public class ThermostatOverview extends AppCompatActivity {
                 }).start();
             }
         };
-        Timer timer = new Timer();
+
         timer.schedule(taskTime, 0, clockcurrentTemp);
     }
 
