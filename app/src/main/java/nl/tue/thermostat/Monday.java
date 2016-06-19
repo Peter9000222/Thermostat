@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -20,13 +21,13 @@ import java.util.ArrayList;
 
 public class Monday extends AppCompatActivity {
 
+    // copy
     EditText day1mon, day2mon, day3mon, day4mon, day5mon, night1mon, night2mon, night3mon, night4mon, night5mon;
     Switch switchday1mon, switchday2mon, switchday3mon, switchday4mon, switchday5mon,
     switchnight1mon, switchnight2mon, switchnight3mon, switchnight4mon, switchnight5mon;
-
     int days = 1;
     int nights = 1;
-
+    // coppy
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class Monday extends AppCompatActivity {
             }
         });
 
+        //copy
         Button settimemon = (Button) findViewById(R.id.settimemon);
 
         switchday1mon = (Switch) findViewById(R.id.switchday1mon);
@@ -54,7 +56,7 @@ public class Monday extends AppCompatActivity {
         switchnight4mon = (Switch) findViewById(R.id.switchnight4mon);
         switchnight5mon = (Switch) findViewById(R.id.switchnight5mon);
 
-        // testing
+
         new Thread(new Runnable() {
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
@@ -69,9 +71,11 @@ public class Monday extends AppCompatActivity {
                     String type = wpgm.get(0).getType();
                     if (type.equals("day")) {
                         day1mon.setText(time);
+                        switchday1mon.toggle();
                         days++;
                     } else {
                         night1mon.setText(time);
+                        switchday1mon.toggle();
                         nights++;
                     }
                     time = wpgm.get(1).getTime();
@@ -188,9 +192,9 @@ public class Monday extends AppCompatActivity {
                             nights++;
                         }
                     }
-                    time = wpgm.get(2).getTime();
-                    state = wpgm.get(2).getState();
-                    type = wpgm.get(2).getType();
+                    time = wpgm.get(4).getTime();
+                    state = wpgm.get(4).getState();
+                    type = wpgm.get(4).getType();
                     if (type.equals("day")) {
                         if (days == 1) {
                             day1mon.setText(time);
@@ -226,9 +230,196 @@ public class Monday extends AppCompatActivity {
                             nights++;
                         }
                     }
-
-                   // System.out.println(time + " " + state);
-
+                    time = wpgm.get(5).getTime();
+                    state = wpgm.get(5).getState();
+                    type = wpgm.get(5).getType();
+                    if (type.equals("day")) {
+                        if (days == 1) {
+                            day1mon.setText(time);
+                            days++;
+                        } else if (days == 2) {
+                            day2mon.setText(time);
+                            days++;
+                        } else if (days == 3) {
+                            day3mon.setText(time);
+                            days++;
+                        } else if (days == 4) {
+                            day4mon.setText(time);
+                            days++;
+                        }else if (days == 5) {
+                            day5mon.setText(time);
+                            days++;
+                        }
+                    } else {
+                        if (nights == 1) {
+                            night1mon.setText(time);
+                            nights++;
+                        } else if (nights == 2) {
+                            night2mon.setText(time);
+                            nights++;
+                        } else if (nights == 3) {
+                            night3mon.setText(time);
+                            nights++;
+                        } else if (nights == 4) {
+                            night4mon.setText(time);
+                            nights++;
+                        } else if (nights == 5) {
+                            night5mon.setText(time);
+                            nights++;
+                        }
+                    }
+                    time = wpgm.get(6).getTime();
+                    state = wpgm.get(6).getState();
+                    type = wpgm.get(6).getType();
+                    if (type.equals("day")) {
+                        if (days == 1) {
+                            day1mon.setText(time);
+                            days++;
+                        } else if (days == 2) {
+                            day2mon.setText(time);
+                            days++;
+                        } else if (days == 3) {
+                            day3mon.setText(time);
+                            days++;
+                        } else if (days == 4) {
+                            day4mon.setText(time);
+                            days++;
+                        }else if (days == 5) {
+                            day5mon.setText(time);
+                            days++;
+                        }
+                    } else {
+                        if (nights == 1) {
+                            night1mon.setText(time);
+                            nights++;
+                        } else if (nights == 2) {
+                            night2mon.setText(time);
+                            nights++;
+                        } else if (nights == 3) {
+                            night3mon.setText(time);
+                            nights++;
+                        } else if (nights == 4) {
+                            night4mon.setText(time);
+                            nights++;
+                        } else if (nights == 5) {
+                            night5mon.setText(time);
+                            nights++;
+                        }
+                    }
+                    time = wpgm.get(7).getTime();
+                    state = wpgm.get(7).getState();
+                    type = wpgm.get(7).getType();
+                    if (type.equals("day")) {
+                        if (days == 1) {
+                            day1mon.setText(time);
+                            days++;
+                        } else if (days == 2) {
+                            day2mon.setText(time);
+                            days++;
+                        } else if (days == 3) {
+                            day3mon.setText(time);
+                            days++;
+                        } else if (days == 4) {
+                            day4mon.setText(time);
+                            days++;
+                        }else if (days == 5) {
+                            day5mon.setText(time);
+                            days++;
+                        }
+                    } else {
+                        if (nights == 1) {
+                            night1mon.setText(time);
+                            nights++;
+                        } else if (nights == 2) {
+                            night2mon.setText(time);
+                            nights++;
+                        } else if (nights == 3) {
+                            night3mon.setText(time);
+                            nights++;
+                        } else if (nights == 4) {
+                            night4mon.setText(time);
+                            nights++;
+                        } else if (nights == 5) {
+                            night5mon.setText(time);
+                            nights++;
+                        }
+                    }
+                    time = wpgm.get(8).getTime();
+                    state = wpgm.get(8).getState();
+                    type = wpgm.get(8).getType();
+                    if (type.equals("day")) {
+                        if (days == 1) {
+                            day1mon.setText(time);
+                            days++;
+                        } else if (days == 2) {
+                            day2mon.setText(time);
+                            days++;
+                        } else if (days == 3) {
+                            day3mon.setText(time);
+                            days++;
+                        } else if (days == 4) {
+                            day4mon.setText(time);
+                            days++;
+                        }else if (days == 5) {
+                            day5mon.setText(time);
+                            days++;
+                        }
+                    } else {
+                        if (nights == 1) {
+                            night1mon.setText(time);
+                            nights++;
+                        } else if (nights == 2) {
+                            night2mon.setText(time);
+                            nights++;
+                        } else if (nights == 3) {
+                            night3mon.setText(time);
+                            nights++;
+                        } else if (nights == 4) {
+                            night4mon.setText(time);
+                            nights++;
+                        } else if (nights == 5) {
+                            night5mon.setText(time);
+                            nights++;
+                        }
+                    }
+                    time = wpgm.get(9).getTime();
+                    state = wpgm.get(9).getState();
+                    type = wpgm.get(9).getType();
+                    if (type.equals("day")) {
+                        if (days == 1) {
+                            day1mon.setText(time);
+                            days++;
+                        } else if (days == 2) {
+                            day2mon.setText(time);
+                            days++;
+                        } else if (days == 3) {
+                            day3mon.setText(time);
+                            days++;
+                        } else if (days == 4) {
+                            day4mon.setText(time);
+                            days++;
+                        }else if (days == 5) {
+                            day5mon.setText(time);
+                            days++;
+                        }
+                    } else {
+                        if (nights == 1) {
+                            night1mon.setText(time);
+                            nights++;
+                        } else if (nights == 2) {
+                            night2mon.setText(time);
+                            nights++;
+                        } else if (nights == 3) {
+                            night3mon.setText(time);
+                            nights++;
+                        } else if (nights == 4) {
+                            night4mon.setText(time);
+                            nights++;
+                        } else if (nights == 5) {
+                            night5mon.setText(time);
+                            nights++;
+                        }
+                    }
                 } catch (Exception e) {
                     System.err.println("Error from getdata " + e);
                 }
@@ -351,6 +542,7 @@ public class Monday extends AppCompatActivity {
                 showTimePickerDialog(view, night5mon); // show dialog
             }
         });
+        // copy
 
     }
 

@@ -58,7 +58,6 @@ public class ThermostatOverview extends AppCompatActivity {
         HeatingSystem.BASE_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/19";
         HeatingSystem.WEEK_PROGRAM_ADDRESS = HeatingSystem.BASE_ADDRESS + "/weekProgram";
 
-
         // server week program switch
         getParamProgram = "";
         new Thread(new Runnable() {
@@ -81,7 +80,6 @@ public class ThermostatOverview extends AppCompatActivity {
                 }
             }
         }).start();
-
 
         // temp display
         // set display to current temp of system
@@ -280,8 +278,6 @@ public class ThermostatOverview extends AppCompatActivity {
         });
 
 
-
-
         // control window temps
         currentTime = (TextView) findViewById(R.id.currentTime);
         taskTime = new TimerTask() {
@@ -307,7 +303,6 @@ public class ThermostatOverview extends AppCompatActivity {
                 }).start();
             }
         };
-
         timer.schedule(taskTime, 0, clockcurrentTemp);
     }
 
