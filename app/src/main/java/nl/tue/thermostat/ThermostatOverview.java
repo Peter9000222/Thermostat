@@ -26,10 +26,11 @@ public class ThermostatOverview extends AppCompatActivity {
     SeekBar tempbar;            // process bar
     View view;
     Button bweekprogram, bsetprogram;
-    Boolean on;                 // state is set by thread for program button
+    Boolean on = false;         // state is set to false by default for week program button
     Drawable weekon;            // layout program on
     Drawable weekoff;           // layout program off
     double currentTemp;         // value for temp
+    TextView currentTempText;   // Text for current temperature
 
     //control window
     TimerTask taskTime;
@@ -69,11 +70,11 @@ public class ThermostatOverview extends AppCompatActivity {
                     currentTime.setText(getParamProgram);                       // set program state to string
                     if (getParamProgram.equals("off")) {                        // if program state is "off"
                         bweekprogram.setBackground(weekoff);                    // set program button layout to off
-                        bweekprogram.setText("Week program off");               // set program button text to "off"
+                        bweekprogram.setText("Week program is off");               // set program button text to "off"
                         on = false;                                             // remember state
                     } else {                                                    // if program state is "on"
                         bweekprogram.setBackground(weekon);                     // set program button layout to on
-                        bweekprogram.setText("Week program on");                // set program button text to "on"
+                        bweekprogram.setText("Week program is on");                // set program button text to "on"
                         on = true;                                              // remember state
                     }
                 } catch (Exception e) {                                         // catch error, always add this !!
@@ -279,7 +280,9 @@ public class ThermostatOverview extends AppCompatActivity {
             }
         });
 
+        // current temperature text
 
+        currentTempText = (TextView) findViewById(R.id.currentTempText);
 
 
         // control window temps
