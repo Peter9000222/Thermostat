@@ -279,13 +279,9 @@ public class ThermostatOverview extends AppCompatActivity {
         });
 
         // current temperature text
-
-<<<<<<< HEAD
+        
         currentTempText = (TextView) findViewById(R.id.currentTempText);
 
-
-=======
->>>>>>> origin/master
         // control window temps
         currentTime = (TextView) findViewById(R.id.currentTime);
         taskTime = new TimerTask() {
