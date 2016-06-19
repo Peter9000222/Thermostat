@@ -461,6 +461,7 @@ public class Monday extends AppCompatActivity {
                         "Times and switches are set.", Toast.LENGTH_LONG).show();
             }
         });
+        // copy
 
         // clocks
         day1mon = (EditText) findViewById(R.id.day1tues);
@@ -542,8 +543,6 @@ public class Monday extends AppCompatActivity {
                 showTimePickerDialog(view, night5mon); // show dialog
             }
         });
-        // copy
-
     }
 
     public void showTimePickerDialog(View v, EditText id) {
