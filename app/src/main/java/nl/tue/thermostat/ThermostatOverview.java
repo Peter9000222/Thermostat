@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -70,10 +71,12 @@ public class ThermostatOverview extends AppCompatActivity {
                     if (getParamProgram.equals("off")) {                        // if program state is "off"
                         bweekprogram.setBackground(weekoff);                    // set program button layout to off
                         bweekprogram.setText("Week program is off");               // set program button text to "off"
+                        bweekprogram.setPaintFlags(0);
                         on = false;                                             // remember state
                     } else {                                                    // if program state is "on"
                         bweekprogram.setBackground(weekon);                     // set program button layout to on
-                        bweekprogram.setText("Week program is on");                // set program button text to "on"
+                        bweekprogram.setText("Week program is on");
+                        bweekprogram.setPaintFlags(bweekprogram.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG); // set program button text to "on"
                         on = true;                                              // remember state
                     }
                 } catch (Exception e) {                                         // catch error, always add this !!
@@ -259,6 +262,7 @@ public class ThermostatOverview extends AppCompatActivity {
                     }}).start();
                     bweekprogram.setText("Week program is on");                     // set program button text to "off"
                     bweekprogram.setBackground(weekon);                          // set program button layout to on
+                    bweekprogram.setPaintFlags(bweekprogram.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                     on = true;
                 }
                 else {                                                           // current state of week program is on
@@ -273,6 +277,7 @@ public class ThermostatOverview extends AppCompatActivity {
                     }}).start();
                     bweekprogram.setText("Week program is off");                   // set program button text to "on"
                     bweekprogram.setBackground(weekoff);                        // set program button layout to off
+                    bweekprogram.setPaintFlags(0);
                     on = false;
                 }
             }
