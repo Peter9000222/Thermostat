@@ -58,6 +58,31 @@ public class ThermostatOverview extends AppCompatActivity {
         HeatingSystem.BASE_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/19";
         HeatingSystem.WEEK_PROGRAM_ADDRESS = HeatingSystem.BASE_ADDRESS + "/weekProgram";
 
+
+        // server week program switch
+        getParamProgram = "";
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    getParamProgram  = HeatingSystem.get("weekProgramState");   // get program state
+                    currentTime.setText(getParamProgram);                       // set program state to string
+                    if (getParamProgram.equals("off")) {                        // if program state is "off"
+                        bweekprogram.setBackground(weekoff);                    // set program button layout to off
+                        bweekprogram.setText("Week program off");               // set program button text to "off"
+                        on = false;                                             // remember state
+                    } else {                                                    // if program state is "on"
+                        bweekprogram.setBackground(weekon);                     // set program button layout to on
+                        bweekprogram.setText("Week program on");                // set program button text to "on"
+                        on = true;                                              // remember state
+                    }
+                } catch (Exception e) {                                         // catch error, always add this !!
+                    System.err.println("Error from getdata "+e);
+                }
+            }
+        }).start();
+
+
         // temp display
         // set display to current temp of system
         temp = (TextView) findViewById(R.id.temp);
@@ -254,28 +279,7 @@ public class ThermostatOverview extends AppCompatActivity {
             }
         });
 
-        // server week program switch
-        getParamProgram = "";
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    getParamProgram  = HeatingSystem.get("weekProgramState");   // get program state
-                    currentTime.setText(getParamProgram);                       // set program state to string
-                    if (getParamProgram.equals("off")) {                        // if program state is "off"
-                        bweekprogram.setBackground(weekoff);                    // set program button layout to off
-                        bweekprogram.setText("Week program off");               // set program button text to "off"
-                        on = false;                                             // remember state
-                    } else {                                                    // if program state is "on"
-                        bweekprogram.setBackground(weekon);                     // set program button layout to on
-                        bweekprogram.setText("Week program on");                // set program button text to "on"
-                        on = true;                                              // remember state
-                    }
-                } catch (Exception e) {                                         // catch error, always add this !!
-                    System.err.println("Error from getdata "+e);
-                }
-            }
-        }).start();
+
 
 
         // control window temps
