@@ -1,16 +1,27 @@
 package nl.tue.thermostat;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.Toast;
+
+import org.thermostatapp.util.HeatingSystem;
+import org.thermostatapp.util.SwitchHS;
+import org.thermostatapp.util.WeekProgram;
 
 public class Thursday extends AppCompatActivity {
 
     EditText day1thurs, day2thurs, day3thurs, day4thurs, day5thurs, night1thurs, night2thurs, night3thurs,
             night4thurs, night5thurs;
+
+    Switch switchday1thurs, switchday2thurs, switchday3thurs, switchday4thurs, switchday5thurs,
+            switchnight1thurs, switchnight2thurs, switchnight3thurs, switchnight4thurs, switchnight5thurs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +33,57 @@ public class Thursday extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), WeekOverview.class);
                 startActivity(intent);
+            }
+        });
+
+        HeatingSystem.BASE_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/19";
+        HeatingSystem.WEEK_PROGRAM_ADDRESS = HeatingSystem.BASE_ADDRESS + "/weekProgram";
+
+        Button settimetues = (Button) findViewById(R.id.settimetues);
+
+        switchday1thurs = (Switch) findViewById(R.id.switchday1thurs);
+        switchday2thurs = (Switch) findViewById(R.id.switchday2thurs);
+        switchday3thurs = (Switch) findViewById(R.id.switchday3thurs);
+        switchday4thurs = (Switch) findViewById(R.id.switchday4thurs);
+        switchday5thurs = (Switch) findViewById(R.id.switchday5thurs);
+        switchnight1thurs = (Switch) findViewById(R.id.switchnight1thurs);
+        switchnight2thurs = (Switch) findViewById(R.id.switchnight2thurs);
+        switchnight3thurs = (Switch) findViewById(R.id.switchnight3thurs);
+        switchnight4thurs = (Switch) findViewById(R.id.switchnight4thurs);
+        switchnight5thurs = (Switch) findViewById(R.id.switchnight5thurs);
+
+        settimetues.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                new Thread(new Runnable() {
+                    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+                    @Override
+                    public void run() {
+                        try {
+                            // Get the week program
+                            WeekProgram wpg = HeatingSystem.getWeekProgram();
+                            // Set the week program to default
+                            wpg.setDefault();
+                            wpg.data.get("Thursday").set(0, new SwitchHS("night", switchnight1thurs.isChecked(), night1thurs.getText().toString()));
+                            wpg.data.get("Thursday").set(1, new SwitchHS("night", switchnight2thurs.isChecked(), night2thurs.getText().toString()));
+                            wpg.data.get("Thursday").set(2, new SwitchHS("night", switchnight3thurs.isChecked(), night3thurs.getText().toString()));
+                            wpg.data.get("Thursday").set(3, new SwitchHS("night", switchnight4thurs.isChecked(), night4thurs.getText().toString()));
+                            wpg.data.get("Thursday").set(4, new SwitchHS("night", switchnight5thurs.isChecked(), night5thurs.getText().toString()));
+                            wpg.data.get("Thursday").set(5, new SwitchHS("day", switchday1thurs.isChecked(), day1thurs.getText().toString()));
+                            wpg.data.get("Thursday").set(6, new SwitchHS("day", switchday2thurs.isChecked(), day2thurs.getText().toString()));
+                            wpg.data.get("Thursday").set(7, new SwitchHS("day", switchday3thurs.isChecked(), day3thurs.getText().toString()));
+                            wpg.data.get("Thursday").set(8, new SwitchHS("day", switchday4thurs.isChecked(), day4thurs.getText().toString()));
+                            wpg.data.get("Thursday").set(9, new SwitchHS("day", switchday5thurs.isChecked(), day5thurs.getText().toString()));
+                            //Upload the updated program
+                            HeatingSystem.setWeekProgram(wpg);
+                        } catch (Exception e) {
+                            System.err.println("Error from getdata " + e);
+                        }
+                    }
+                }).start();
+                Toast.makeText(getApplicationContext(),
+                        "Times and switches are set.", Toast.LENGTH_LONG).show();
             }
         });
 

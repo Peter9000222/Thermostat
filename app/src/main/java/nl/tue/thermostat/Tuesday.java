@@ -25,10 +25,6 @@ public class Tuesday extends AppCompatActivity {
             switchnight1tues, switchnight2tues, switchnight3tues, switchnight4tues, switchnight5tues;
     // COPY COPY
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
