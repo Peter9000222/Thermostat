@@ -62,7 +62,7 @@
 
     <EditText
         style="@style/textedit"
-        android:id="@+id/day1tues" />
+        android:id="@+id/day1mon" />
 
     <EditText
         style="@style/textedit"

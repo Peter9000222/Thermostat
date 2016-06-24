@@ -15,6 +15,8 @@ import org.thermostatapp.util.HeatingSystem;
 import org.thermostatapp.util.SwitchHS;
 import org.thermostatapp.util.WeekProgram;
 
+import java.util.ArrayList;
+
 public class Sunday extends AppCompatActivity {
 
     EditText day1sun, day2sun, day3sun, day4sun, day5sun, night1sun, night2sun, night3sun,
@@ -22,6 +24,13 @@ public class Sunday extends AppCompatActivity {
 
     Switch switchday1sun, switchday2sun, switchday3sun, switchday4sun, switchday5sun,
             switchnight1sun, switchnight2sun, switchnight3sun, switchnight4sun, switchnight5sun;
+
+    int days = 1;
+    int nights = 1;
+
+    String time, time1, time2, time3, time4, time5, time6, time7, time8, time9, time10,
+            type;
+    Boolean state, state1, state2, state3, state4, state5, state6, state7, state8, state9, state10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +45,6 @@ public class Sunday extends AppCompatActivity {
             }
         });
 
-
-        HeatingSystem.BASE_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/19";
-        HeatingSystem.WEEK_PROGRAM_ADDRESS = HeatingSystem.BASE_ADDRESS + "/weekProgram";
-
         Button settimesun = (Button) findViewById(R.id.settimesun);
 
         switchday1sun = (Switch) findViewById(R.id.switchday1sun);
@@ -53,6 +58,89 @@ public class Sunday extends AppCompatActivity {
         switchnight4sun = (Switch) findViewById(R.id.switchnight4sun);
         switchnight5sun = (Switch) findViewById(R.id.switchnight5sun);
 
+        new Thread(new Runnable() {
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void run() {
+                try {
+                    // Get the week program
+                    WeekProgram wpg = HeatingSystem.getWeekProgram();
+                    ArrayList<SwitchHS> wpgm = wpg.data.get("Sunday");
+                    // set the right varibles for the times and states
+                    for (int i = 0; i < 10; i++) {
+                        time = wpgm.get(i).getTime();
+                        state = wpgm.get(i).getState();
+                        type = wpgm.get(i).getType();
+                        if (type.equals("day")) {
+                            if (days == 1) {
+                                time1 = time;
+                                state1 = state;
+                            } else if (days == 2) {
+                                time2 = time;
+                                state2 = state;
+                            } else if (days == 3) {
+                                time3 = time;
+                                state3 = state;
+                            } else if (days == 4) {
+                                time4 = time;
+                                state4 = state;
+                            } else if (days == 5) {
+                                time5 = time;
+                                state5 = state;
+                            }
+                            days++;
+                        } else if (type.equals("night")) {
+                            if (nights == 1) {
+                                time6 = time;
+                                state6 = state;
+                            } else if (nights == 2) {
+                                time7 = time;
+                                state7 = state;
+                            } else if (nights == 3) {
+                                time8 = time;
+                                state8 = state;
+                            } else if (nights == 4) {
+                                time9 = time;
+                                state9 = state;
+                            } else if (nights == 5) {
+                                time10 = time;
+                                state10 = state;
+                            }
+                            nights++;
+                        }
+                    }
+                    // make sure the time and state variables are displayed
+                    day1sun.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            day1sun.setText(time1);
+                            day2sun.setText(time2);
+                            day3sun.setText(time3);
+                            day4sun.setText(time4);
+                            day5sun.setText(time5);
+                            switchday1sun.setChecked(state1);
+                            switchday2sun.setChecked(state2);
+                            switchday3sun.setChecked(state3);
+                            switchday4sun.setChecked(state4);
+                            switchday5sun.setChecked(state5);
+                            night1sun.setText(time6);
+                            night2sun.setText(time7);
+                            night3sun.setText(time8);
+                            night4sun.setText(time9);
+                            night5sun.setText(time10);
+                            switchnight1sun.setChecked(state6);
+                            switchnight2sun.setChecked(state7);
+                            switchnight3sun.setChecked(state8);
+                            switchnight4sun.setChecked(state9);
+                            switchnight5sun.setChecked(state10);
+                        }
+                    });
+                } catch (Exception e) {
+                    System.err.println("Error from getdata " + e);
+                }
+            }
+        }).start();
+
         settimesun.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -65,7 +153,6 @@ public class Sunday extends AppCompatActivity {
                             // Get the week program
                             WeekProgram wpg = HeatingSystem.getWeekProgram();
                             // Set the week program to default
-                            //wpg.setDefault();
                             wpg.data.get("Sunday").set(0, new SwitchHS("night", switchnight1sun.isChecked(), night1sun.getText().toString()));
                             wpg.data.get("Sunday").set(1, new SwitchHS("night", switchnight2sun.isChecked(), night2sun.getText().toString()));
                             wpg.data.get("Sunday").set(2, new SwitchHS("night", switchnight3sun.isChecked(), night3sun.getText().toString()));
@@ -88,7 +175,7 @@ public class Sunday extends AppCompatActivity {
             }
         });
 
-
+        // clocks
         day1sun = (EditText) findViewById(R.id.day1sun);
         day1sun.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -171,6 +258,7 @@ public class Sunday extends AppCompatActivity {
 
     }
 
+    // clock dialog
     public void showTimePickerDialog(View v, EditText id) {
         TimePickerFragment newFragment = new TimePickerFragment(id);
         newFragment.show(getSupportFragmentManager(), "time");

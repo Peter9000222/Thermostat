@@ -3,12 +3,10 @@ package nl.tue.thermostat;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -21,20 +19,24 @@ import java.util.ArrayList;
 
 public class Monday extends AppCompatActivity {
 
-    // copy
     EditText day1mon, day2mon, day3mon, day4mon, day5mon, night1mon, night2mon, night3mon, night4mon, night5mon;
     Switch switchday1mon, switchday2mon, switchday3mon, switchday4mon, switchday5mon,
-    switchnight1mon, switchnight2mon, switchnight3mon, switchnight4mon, switchnight5mon;
+            switchnight1mon, switchnight2mon, switchnight3mon, switchnight4mon, switchnight5mon;
+
     int days = 1;
     int nights = 1;
-    // coppy
+
+    String time, time1, time2, time3, time4, time5, time6, time7, time8, time9, time10,
+            type;
+    Boolean state, state1, state2, state3, state4, state5, state6, state7, state8, state9, state10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monday);
         Button backtemp = (Button) findViewById(R.id.backtemp);
-        backtemp.setOnClickListener(new View.OnClickListener(){
+
+        backtemp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), WeekOverview.class);
@@ -42,9 +44,6 @@ public class Monday extends AppCompatActivity {
             }
         });
 
-
-
-        //copy
         Button settimemon = (Button) findViewById(R.id.settimemon);
 
         switchday1mon = (Switch) findViewById(R.id.switchday1mon);
@@ -58,8 +57,16 @@ public class Monday extends AppCompatActivity {
         switchnight4mon = (Switch) findViewById(R.id.switchnight4mon);
         switchnight5mon = (Switch) findViewById(R.id.switchnight5mon);
 
-
-
+        day1mon = (EditText) findViewById(R.id.day1mon);
+        day2mon = (EditText) findViewById(R.id.day2mon);
+        day3mon = (EditText) findViewById(R.id.day3mon);
+        day4mon = (EditText) findViewById(R.id.day4mon);
+        day5mon = (EditText) findViewById(R.id.day5mon);
+        night1mon = (EditText) findViewById(R.id.night1mon);
+        night2mon = (EditText) findViewById(R.id.night2mon);
+        night3mon = (EditText) findViewById(R.id.night3mon);
+        night4mon = (EditText) findViewById(R.id.night4mon);
+        night5mon = (EditText) findViewById(R.id.night5mon);
 
         new Thread(new Runnable() {
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -69,548 +76,82 @@ public class Monday extends AppCompatActivity {
                     // Get the week program
                     WeekProgram wpg = HeatingSystem.getWeekProgram();
                     ArrayList<SwitchHS> wpgm = wpg.data.get("Monday");
-
-                    String time = wpgm.get(0).getTime();
-                    Boolean state = wpgm.get(0).getState();
-                    String type = wpgm.get(0).getType();
-                    if (type.equals("day")) {
-                        day1mon.setText(time);
-                        switchday1mon.setTag(state);
-                        switchday1mon.setChecked(state);
-                        days++;
-                    } else {
-                        night1mon.setText(time);
-                        switchnight1mon.setTag(state);
-                        switchnight1mon.setChecked(state);
-                        nights++;
-                    }
-                    time = wpgm.get(1).getTime();
-                    state = wpgm.get(1).getState();
-                    type = wpgm.get(1).getType();
-                    if (type.equals("day")) {
-                        if (days == 1) {
-                            day1mon.setText(time);
-                            switchday1mon.setTag(state);
-                            switchday1mon.setChecked(state);
+                    // set the right varibles for the times and states
+                    for (int i = 0; i < 10; i++) {
+                        time = wpgm.get(i).getTime();
+                        state = wpgm.get(i).getState();
+                        type = wpgm.get(i).getType();
+                        if (type.equals("day")) {
+                            if (days == 1) {
+                                time1 = time;
+                                state1 = state;
+                            } else if (days == 2) {
+                                time2 = time;
+                                state2 = state;
+                            } else if (days == 3) {
+                                time3 = time;
+                                state3 = state;
+                            } else if (days == 4) {
+                                time4 = time;
+                                state4 = state;
+                            } else if (days == 5) {
+                                time5 = time;
+                                state5 = state;
+                            }
                             days++;
-                        } else if (days == 2) {
-                            day2mon.setText(time);
-                            switchday2mon.setTag(state);
-                            switchday2mon.setChecked(state);
-                            days++;
-                        } else if (days == 3) {
-                            day3mon.setText(time);
-                            switchday3mon.setTag(state);
-                            switchday3mon.setChecked(state);
-                            days++;
-                        } else if (days == 4) {
-                            day4mon.setText(time);
-                            switchday4mon.setTag(state);
-                            switchday4mon.setChecked(state);
-                            days++;
-                        }else if (days == 5) {
-                            day5mon.setText(time);
-                            switchday5mon.setTag(state);
-                            switchday5mon.setChecked(state);
-                            days++;
-                        }
-                    } else {
-                        if (nights == 1) {
-                            night1mon.setText(time);
-                            switchnight1mon.setTag(state);
-                            switchnight1mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 2) {
-                            night2mon.setText(time);
-                            switchnight2mon.setTag(state);
-                            switchnight2mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 3) {
-                            night3mon.setText(time);
-                            switchnight3mon.setTag(state);
-                            switchnight3mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 4) {
-                            night4mon.setText(time);
-                            switchnight4mon.setTag(state);
-                            switchnight4mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 5) {
-                            night5mon.setText(time);
-                            switchnight5mon.setTag(state);
-                            switchnight5mon.setChecked(state);
+                        } else if (type.equals("night")) {
+                            if (nights == 1) {
+                                time6 = time;
+                                state6 = state;
+                            } else if (nights == 2) {
+                                time7 = time;
+                                state7 = state;
+                            } else if (nights == 3) {
+                                time8 = time;
+                                state8 = state;
+                            } else if (nights == 4) {
+                                time9 = time;
+                                state9 = state;
+                            } else if (nights == 5) {
+                                time10 = time;
+                                state10 = state;
+                            }
                             nights++;
                         }
                     }
-                    if (type.equals("day")) {
-                        if (days == 1) {
-                            day1mon.setText(time);
-                            switchday1mon.setTag(state);
-                            switchday1mon.setChecked(state);
-                            days++;
-                        } else if (days == 2) {
-                            day2mon.setText(time);
-                            switchday2mon.setTag(state);
-                            switchday2mon.setChecked(state);
-                            days++;
-                        } else if (days == 3) {
-                            day3mon.setText(time);
-                            switchday3mon.setTag(state);
-                            switchday3mon.setChecked(state);
-                            days++;
-                        } else if (days == 4) {
-                            day4mon.setText(time);
-                            switchday4mon.setTag(state);
-                            switchday4mon.setChecked(state);
-                            days++;
-                        }else if (days == 5) {
-                            day5mon.setText(time);
-                            switchday5mon.setTag(state);
-                            switchday5mon.setChecked(state);
-                            days++;
+                    // make sure the time and state variables are displayed
+                    day1mon.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            day1mon.setText(time1);
+                            day2mon.setText(time2);
+                            day3mon.setText(time3);
+                            day4mon.setText(time4);
+                            day5mon.setText(time5);
+                            switchday1mon.setChecked(state1);
+                            switchday2mon.setChecked(state2);
+                            switchday3mon.setChecked(state3);
+                            switchday4mon.setChecked(state4);
+                            switchday5mon.setChecked(state5);
+                            night1mon.setText(time6);
+                            night2mon.setText(time7);
+                            night3mon.setText(time8);
+                            night4mon.setText(time9);
+                            night5mon.setText(time10);
+                            switchnight1mon.setChecked(state6);
+                            switchnight2mon.setChecked(state7);
+                            switchnight3mon.setChecked(state8);
+                            switchnight4mon.setChecked(state9);
+                            switchnight5mon.setChecked(state10);
                         }
-                    } else {
-                        if (nights == 1) {
-                            night1mon.setText(time);
-                            switchnight1mon.setTag(state);
-                            switchnight1mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 2) {
-                            night2mon.setText(time);
-                            switchnight2mon.setTag(state);
-                            switchnight2mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 3) {
-                            night3mon.setText(time);
-                            switchnight3mon.setTag(state);
-                            switchnight3mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 4) {
-                            night4mon.setText(time);
-                            switchnight4mon.setTag(state);
-                            switchnight4mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 5) {
-                            night5mon.setText(time);
-                            switchnight5mon.setTag(state);
-                            switchnight5mon.setChecked(state);
-                            nights++;
-                        }
-                    }
-                    time = wpgm.get(3).getTime();
-                    state = wpgm.get(3).getState();
-                    type = wpgm.get(3).getType();
-                    if (type.equals("day")) {
-                        if (days == 1) {
-                            day1mon.setText(time);
-                            switchday1mon.setTag(state);
-                            switchday1mon.setChecked(state);
-                            days++;
-                        } else if (days == 2) {
-                            day2mon.setText(time);
-                            switchday2mon.setTag(state);
-                            switchday2mon.setChecked(state);
-                            days++;
-                        } else if (days == 3) {
-                            day3mon.setText(time);
-                            switchday3mon.setTag(state);
-                            switchday3mon.setChecked(state);
-                            days++;
-                        } else if (days == 4) {
-                            day4mon.setText(time);
-                            switchday4mon.setTag(state);
-                            switchday4mon.setChecked(state);
-                            days++;
-                        }else if (days == 5) {
-                            day5mon.setText(time);
-                            switchday5mon.setTag(state);
-                            switchday5mon.setChecked(state);
-                            days++;
-                        }
-                    } else {
-                        if (nights == 1) {
-                            night1mon.setText(time);
-                            switchnight1mon.setTag(state);
-                            switchnight1mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 2) {
-                            night2mon.setText(time);
-                            switchnight2mon.setTag(state);
-                            switchnight2mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 3) {
-                            night3mon.setText(time);
-                            switchnight3mon.setTag(state);
-                            switchnight3mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 4) {
-                            night4mon.setText(time);
-                            switchnight4mon.setTag(state);
-                            switchnight4mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 5) {
-                            night5mon.setText(time);
-                            switchnight5mon.setTag(state);
-                            switchnight5mon.setChecked(state);
-                            nights++;
-                        }
-                    }
-                    time = wpgm.get(4).getTime();
-                    state = wpgm.get(4).getState();
-                    type = wpgm.get(4).getType();
-                    if (type.equals("day")) {
-                        if (days == 1) {
-                            day1mon.setText(time);
-                            switchday1mon.setTag(state);
-                            switchday1mon.setChecked(state);
-                            days++;
-                        } else if (days == 2) {
-                            day2mon.setText(time);
-                            switchday2mon.setTag(state);
-                            switchday2mon.setChecked(state);
-                            days++;
-                        } else if (days == 3) {
-                            day3mon.setText(time);
-                            switchday3mon.setTag(state);
-                            switchday3mon.setChecked(state);
-                            days++;
-                        } else if (days == 4) {
-                            day4mon.setText(time);
-                            switchday4mon.setTag(state);
-                            switchday4mon.setChecked(state);
-                            days++;
-                        }else if (days == 5) {
-                            day5mon.setText(time);
-                            switchday5mon.setTag(state);
-                            switchday5mon.setChecked(state);
-                            days++;
-                        }
-                    } else {
-                        if (nights == 1) {
-                            night1mon.setText(time);
-                            switchnight1mon.setTag(state);
-                            switchnight1mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 2) {
-                            night2mon.setText(time);
-                            switchnight2mon.setTag(state);
-                            switchnight2mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 3) {
-                            night3mon.setText(time);
-                            switchnight3mon.setTag(state);
-                            switchnight3mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 4) {
-                            night4mon.setText(time);
-                            switchnight4mon.setTag(state);
-                            switchnight4mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 5) {
-                            night5mon.setText(time);
-                            switchnight5mon.setTag(state);
-                            switchnight5mon.setChecked(state);
-                            nights++;
-                        }
-                    }
-                    time = wpgm.get(5).getTime();
-                    state = wpgm.get(5).getState();
-                    type = wpgm.get(5).getType();
-                    if (type.equals("day")) {
-                        if (days == 1) {
-                            day1mon.setText(time);
-                            switchday1mon.setTag(state);
-                            switchday1mon.setChecked(state);
-                            days++;
-                        } else if (days == 2) {
-                            day2mon.setText(time);
-                            switchday2mon.setTag(state);
-                            switchday2mon.setChecked(state);
-                            days++;
-                        } else if (days == 3) {
-                            day3mon.setText(time);
-                            switchday3mon.setTag(state);
-                            switchday3mon.setChecked(state);
-                            days++;
-                        } else if (days == 4) {
-                            day4mon.setText(time);
-                            switchday4mon.setTag(state);
-                            switchday4mon.setChecked(state);
-                            days++;
-                        }else if (days == 5) {
-                            day5mon.setText(time);
-                            switchday5mon.setTag(state);
-                            switchday5mon.setChecked(state);
-                            days++;
-                        }
-                    } else {
-                        if (nights == 1) {
-                            night1mon.setText(time);
-                            switchnight1mon.setTag(state);
-                            switchnight1mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 2) {
-                            night2mon.setText(time);
-                            switchnight2mon.setTag(state);
-                            switchnight2mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 3) {
-                            night3mon.setText(time);
-                            switchnight3mon.setTag(state);
-                            switchnight3mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 4) {
-                            night4mon.setText(time);
-                            switchnight4mon.setTag(state);
-                            switchnight4mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 5) {
-                            night5mon.setText(time);
-                            switchnight5mon.setTag(state);
-                            switchnight5mon.setChecked(state);
-                            nights++;
-                        }
-                    }
-                    time = wpgm.get(6).getTime();
-                    state = wpgm.get(6).getState();
-                    type = wpgm.get(6).getType();
-                    if (type.equals("day")) {
-                        if (days == 1) {
-                            day1mon.setText(time);
-                            switchday1mon.setTag(state);
-                            switchday1mon.setChecked(state);
-                            days++;
-                        } else if (days == 2) {
-                            day2mon.setText(time);
-                            switchday2mon.setTag(state);
-                            switchday2mon.setChecked(state);
-                            days++;
-                        } else if (days == 3) {
-                            day3mon.setText(time);
-                            switchday3mon.setTag(state);
-                            switchday3mon.setChecked(state);
-                            days++;
-                        } else if (days == 4) {
-                            day4mon.setText(time);
-                            switchday4mon.setTag(state);
-                            switchday4mon.setChecked(state);
-                            days++;
-                        }else if (days == 5) {
-                            day5mon.setText(time);
-                            switchday5mon.setTag(state);
-                            switchday5mon.setChecked(state);
-                            days++;
-                        }
-                    } else {
-                        if (nights == 1) {
-                            night1mon.setText(time);
-                            switchnight1mon.setTag(state);
-                            switchnight1mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 2) {
-                            night2mon.setText(time);
-                            switchnight2mon.setTag(state);
-                            switchnight2mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 3) {
-                            night3mon.setText(time);
-                            switchnight3mon.setTag(state);
-                            switchnight3mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 4) {
-                            night4mon.setText(time);
-                            switchnight4mon.setTag(state);
-                            switchnight4mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 5) {
-                            night5mon.setText(time);
-                            switchnight5mon.setTag(state);
-                            switchnight5mon.setChecked(state);
-                            nights++;
-                        }
-                    }
-                    time = wpgm.get(7).getTime();
-                    state = wpgm.get(7).getState();
-                    type = wpgm.get(7).getType();
-                    if (type.equals("day")) {
-                        if (days == 1) {
-                            day1mon.setText(time);
-                            switchday1mon.setTag(state);
-                            switchday1mon.setChecked(state);
-                            days++;
-                        } else if (days == 2) {
-                            day2mon.setText(time);
-                            switchday2mon.setTag(state);
-                            switchday2mon.setChecked(state);
-                            days++;
-                        } else if (days == 3) {
-                            day3mon.setText(time);
-                            switchday3mon.setTag(state);
-                            switchday3mon.setChecked(state);
-                            days++;
-                        } else if (days == 4) {
-                            day4mon.setText(time);
-                            switchday4mon.setTag(state);
-                            switchday4mon.setChecked(state);
-                            days++;
-                        }else if (days == 5) {
-                            day5mon.setText(time);
-                            switchday5mon.setTag(state);
-                            switchday5mon.setChecked(state);
-                            days++;
-                        }
-                    } else {
-                        if (nights == 1) {
-                            night1mon.setText(time);
-                            switchnight1mon.setTag(state);
-                            switchnight1mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 2) {
-                            night2mon.setText(time);
-                            switchnight2mon.setTag(state);
-                            switchnight2mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 3) {
-                            night3mon.setText(time);
-                            switchnight3mon.setTag(state);
-                            switchnight3mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 4) {
-                            night4mon.setText(time);
-                            switchnight4mon.setTag(state);
-                            switchnight4mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 5) {
-                            night5mon.setText(time);
-                            switchnight5mon.setTag(state);
-                            switchnight5mon.setChecked(state);
-                            nights++;
-                        }
-                    }
-                    time = wpgm.get(8).getTime();
-                    state = wpgm.get(8).getState();
-                    type = wpgm.get(8).getType();
-                    if (type.equals("day")) {
-                        if (days == 1) {
-                            day1mon.setText(time);
-                            switchday1mon.setTag(state);
-                            switchday1mon.setChecked(state);
-                            days++;
-                        } else if (days == 2) {
-                            day2mon.setText(time);
-                            switchday2mon.setTag(state);
-                            switchday2mon.setChecked(state);
-                            days++;
-                        } else if (days == 3) {
-                            day3mon.setText(time);
-                            switchday3mon.setTag(state);
-                            switchday3mon.setChecked(state);
-                            days++;
-                        } else if (days == 4) {
-                            day4mon.setText(time);
-                            switchday4mon.setTag(state);
-                            switchday4mon.setChecked(state);
-                            days++;
-                        }else if (days == 5) {
-                            day5mon.setText(time);
-                            switchday5mon.setTag(state);
-                            switchday5mon.setChecked(state);
-                            days++;
-                        }
-                    } else {
-                        if (nights == 1) {
-                            night1mon.setText(time);
-                            switchnight1mon.setTag(state);
-                            switchnight1mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 2) {
-                            night2mon.setText(time);
-                            switchnight2mon.setTag(state);
-                            switchnight2mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 3) {
-                            night3mon.setText(time);
-                            switchnight3mon.setTag(state);
-                            switchnight3mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 4) {
-                            night4mon.setText(time);
-                            switchnight4mon.setTag(state);
-                            switchnight4mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 5) {
-                            night5mon.setText(time);
-                            switchnight5mon.setTag(state);
-                            switchnight5mon.setChecked(state);
-                            nights++;
-                        }
-                    }
-                    time = wpgm.get(9).getTime();
-                    state = wpgm.get(9).getState();
-                    type = wpgm.get(9).getType();
-                    if (type.equals("day")) {
-                        if (days == 1) {
-                            day1mon.setText(time);
-                            switchday1mon.setTag(state);
-                            switchday1mon.setChecked(state);
-                            days++;
-                        } else if (days == 2) {
-                            day2mon.setText(time);
-                            switchday2mon.setTag(state);
-                            switchday2mon.setChecked(state);
-                            days++;
-                        } else if (days == 3) {
-                            day3mon.setText(time);
-                            switchday3mon.setTag(state);
-                            switchday3mon.setChecked(state);
-                            days++;
-                        } else if (days == 4) {
-                            day4mon.setText(time);
-                            switchday4mon.setTag(state);
-                            switchday4mon.setChecked(state);
-                            days++;
-                        }else if (days == 5) {
-                            day5mon.setText(time);
-                            switchday5mon.setTag(state);
-                            switchday5mon.setChecked(state);
-                            days++;
-                        }
-                    } else {
-                        if (nights == 1) {
-                            night1mon.setText(time);
-                            switchnight1mon.setTag(state);
-                            switchnight1mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 2) {
-                            night2mon.setText(time);
-                            switchnight2mon.setTag(state);
-                            switchnight2mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 3) {
-                            night3mon.setText(time);
-                            switchnight3mon.setTag(state);
-                            switchnight3mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 4) {
-                            night4mon.setText(time);
-                            switchnight4mon.setTag(state);
-                            switchnight4mon.setChecked(state);
-                            nights++;
-                        } else if (nights == 5) {
-                            night5mon.setText(time);
-                            switchnight5mon.setTag(state);
-                            switchnight5mon.setChecked(state);
-                            nights++;
-                        }
-                    }
+                    });
                 } catch (Exception e) {
                     System.err.println("Error from getdata " + e);
                 }
             }
         }).start();
 
-
-        settimemon.setOnClickListener(new View.OnClickListener(){
+        settimemon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -622,7 +163,6 @@ public class Monday extends AppCompatActivity {
                             // Get the week program
                             WeekProgram wpg = HeatingSystem.getWeekProgram();
                             // Set the week program to default
-                            //wpg.setDefault();
                             wpg.data.get("Monday").set(0, new SwitchHS("night", switchnight1mon.isChecked(), night1mon.getText().toString()));
                             wpg.data.get("Monday").set(1, new SwitchHS("night", switchnight2mon.isChecked(), night2mon.getText().toString()));
                             wpg.data.get("Monday").set(2, new SwitchHS("night", switchnight3mon.isChecked(), night3mon.getText().toString()));
@@ -644,83 +184,72 @@ public class Monday extends AppCompatActivity {
                         "Times and switches are set.", Toast.LENGTH_LONG).show();
             }
         });
-        // copy
 
         // clocks
-        day1mon = (EditText) findViewById(R.id.day1tues);
-        day1mon.setOnClickListener(new View.OnClickListener(){
+        day1mon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showTimePickerDialog(view, day1mon); // show dialog
             }
         });
 
-        day2mon = (EditText) findViewById(R.id.day2mon);
-        day2mon.setOnClickListener(new View.OnClickListener(){
+        day2mon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showTimePickerDialog(view, day2mon); // show dialog
             }
         });
 
-        day3mon = (EditText) findViewById(R.id.day3mon);
-        day3mon.setOnClickListener(new View.OnClickListener(){
+        day3mon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showTimePickerDialog(view, day3mon); // show dialog
             }
         });
 
-        day4mon = (EditText) findViewById(R.id.day4mon);
-        day4mon.setOnClickListener(new View.OnClickListener(){
+        day4mon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showTimePickerDialog(view, day4mon); // show dialog
             }
         });
 
-        day5mon = (EditText) findViewById(R.id.day5mon);
-        day5mon.setOnClickListener(new View.OnClickListener(){
+        day5mon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showTimePickerDialog(view, day5mon); // show dialog
             }
         });
 
-        night1mon = (EditText) findViewById(R.id.night1mon);
-        night1mon.setOnClickListener(new View.OnClickListener(){
+        night1mon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showTimePickerDialog(view, night1mon); // show dialog
             }
         });
 
-        night2mon = (EditText) findViewById(R.id.night2mon);
-        night2mon.setOnClickListener(new View.OnClickListener(){
+        night2mon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showTimePickerDialog(view, night2mon); // show dialog
             }
         });
 
-        night3mon = (EditText) findViewById(R.id.night3mon);
-        night3mon.setOnClickListener(new View.OnClickListener(){
+        night3mon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showTimePickerDialog(view, night3mon); // show dialog
             }
         });
 
-        night4mon = (EditText) findViewById(R.id.night4mon);
-        night4mon.setOnClickListener(new View.OnClickListener(){
+        night4mon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showTimePickerDialog(view, night4mon); // show dialog
             }
         });
 
-        night5mon = (EditText) findViewById(R.id.night5mon);
-        night5mon.setOnClickListener(new View.OnClickListener(){
+        night5mon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showTimePickerDialog(view, night5mon); // show dialog
@@ -728,6 +257,7 @@ public class Monday extends AppCompatActivity {
         });
     }
 
+    // clock dialog
     public void showTimePickerDialog(View v, EditText id) {
         TimePickerFragment newFragment = new TimePickerFragment(id);
         newFragment.show(getSupportFragmentManager(), "time");
