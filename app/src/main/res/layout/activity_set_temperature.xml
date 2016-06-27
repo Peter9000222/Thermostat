@@ -55,7 +55,7 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-    <EditText
+        <EditText
         android:layout_marginLeft="40dp"
         android:layout_width="90dp"
         android:layout_height="45dp"

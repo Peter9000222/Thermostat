@@ -2,15 +2,19 @@ package nl.tue.thermostat;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import org.thermostatapp.util.HeatingSystem;
+
+import java.util.Locale;
 
 public class SetTemperature extends AppCompatActivity {
 
@@ -21,6 +25,12 @@ public class SetTemperature extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Locale locale = new Locale("nl");
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
         setContentView(R.layout.activity_set_temperature);
         HeatingSystem.BASE_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/19";
 
@@ -64,6 +74,7 @@ public class SetTemperature extends AppCompatActivity {
         settemp.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+
                 chosenDayTemp = daytemp.getText().toString();
                 ddaytemp = Double.parseDouble(chosenDayTemp);
                 if (ddaytemp < 5.0) {

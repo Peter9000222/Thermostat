@@ -46,7 +46,7 @@ public class ThermostatOverview extends AppCompatActivity {
     int clockcurrentTemp = 2000;        // time in miliseconds 1000 is 1 second
 
     //program switch
-    String getParamProgram, target;
+    String getParamProgram, target, current;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -328,13 +328,23 @@ public class ThermostatOverview extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
+                            //connection(view);
+                         //   String curtemp = currentTime.getText().toString();
+                         //   if (curtemp == "") {
+
+                          //      test();
+                         //   }
                             getcurrentTemperature = HeatingSystem.get("currentTemperature");
                             currentTemp = Double.parseDouble(getcurrentTemperature) * 10;
-                            stemp = (int) currentTemp;
+                            int curTemp = (int) currentTemp;
+                            int numberc = curTemp / 10;
+                            int decimalc = curTemp % 10;
+                            current = numberc + "," + decimalc;
+
                             currentTime.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    currentTime.setText(getcurrentTemperature);
+                                    currentTime.setText(current);
                                 }
                             });
 
@@ -342,9 +352,9 @@ public class ThermostatOverview extends AppCompatActivity {
                                 gettargetTemperature = HeatingSystem.get("targetTemperature");
                                 targetTempS = Double.parseDouble(gettargetTemperature) * 10;
                                 targetTemp = (int) targetTempS;
-                                int number = targetTemp / 10;
-                                int decimal = targetTemp % 10;
-                                target = number + "," + decimal + " \u2103";
+                                int numbert = targetTemp / 10;
+                                int decimalt = targetTemp % 10;
+                                target = numbert + "," + decimalt + " \u2103";
                                 temp.post(new Runnable() {
                                     @Override
                                     public void run() {
@@ -353,6 +363,7 @@ public class ThermostatOverview extends AppCompatActivity {
                                     }
                                 });
                             }
+
                         } catch (Exception e) {
                             System.err.println("Error from getdata " + e);
                         }
@@ -361,6 +372,13 @@ public class ThermostatOverview extends AppCompatActivity {
             }
         };
         timer.schedule(taskTime, 0, clockcurrentTemp);
+    }
+
+    public void test() {
+        timer.cancel();
+        System.out.println("bla");
+        connection(view);
+        System.out.println("blddddda");
     }
 
     // freeze message
@@ -382,6 +400,21 @@ public class ThermostatOverview extends AppCompatActivity {
     public void burn(View view) {
         AlertDialog.Builder burn = new AlertDialog.Builder(this);
         burn.setMessage("Do not burn the pipes!! The maximum temperature is 30,0 \u2103")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setTitle("Warning!")
+                .create();
+        burn.show();
+    }
+
+    // burn message
+    public void connection (View view) {
+        AlertDialog.Builder burn = new AlertDialog.Builder(this);
+        burn.setMessage("Bad internet connection")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
