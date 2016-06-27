@@ -113,26 +113,26 @@ public class Thursday extends AppCompatActivity {
                     day1thurs.post(new Runnable() {
                         @Override
                         public void run() {
-                            day1thurs.setText(time1);
-                            day2thurs.setText(time2);
-                            day3thurs.setText(time3);
-                            day4thurs.setText(time4);
-                            day5thurs.setText(time5);
-                            switchday1thurs.setChecked(state1);
-                            switchday2thurs.setChecked(state2);
-                            switchday3thurs.setChecked(state3);
-                            switchday4thurs.setChecked(state4);
-                            switchday5thurs.setChecked(state5);
-                            night1thurs.setText(time6);
-                            night2thurs.setText(time7);
-                            night3thurs.setText(time8);
-                            night4thurs.setText(time9);
-                            night5thurs.setText(time10);
-                            switchnight1thurs.setChecked(state6);
-                            switchnight2thurs.setChecked(state7);
-                            switchnight3thurs.setChecked(state8);
-                            switchnight4thurs.setChecked(state9);
-                            switchnight5thurs.setChecked(state10);
+                            day1thurs.setText(time10);
+                            day2thurs.setText(time9);
+                            day3thurs.setText(time8);
+                            day4thurs.setText(time7);
+                            day5thurs.setText(time6);
+                            switchday1thurs.setChecked(state10);
+                            switchday2thurs.setChecked(state9);
+                            switchday3thurs.setChecked(state8);
+                            switchday4thurs.setChecked(state7);
+                            switchday5thurs.setChecked(state6);
+                            night1thurs.setText(time5);
+                            night2thurs.setText(time4);
+                            night3thurs.setText(time3);
+                            night4thurs.setText(time2);
+                            night5thurs.setText(time1);
+                            switchnight1thurs.setChecked(state5);
+                            switchnight2thurs.setChecked(state4);
+                            switchnight3thurs.setChecked(state3);
+                            switchnight4thurs.setChecked(state2);
+                            switchnight5thurs.setChecked(state1);
                         }
                     });
                 } catch (Exception e) {

@@ -123,26 +123,26 @@ public class Monday extends AppCompatActivity {
                     day1mon.post(new Runnable() {
                         @Override
                         public void run() {
-                            day1mon.setText(time1);
-                            day2mon.setText(time2);
-                            day3mon.setText(time3);
-                            day4mon.setText(time4);
-                            day5mon.setText(time5);
-                            switchday1mon.setChecked(state1);
-                            switchday2mon.setChecked(state2);
-                            switchday3mon.setChecked(state3);
-                            switchday4mon.setChecked(state4);
-                            switchday5mon.setChecked(state5);
-                            night1mon.setText(time6);
-                            night2mon.setText(time7);
-                            night3mon.setText(time8);
-                            night4mon.setText(time9);
-                            night5mon.setText(time10);
-                            switchnight1mon.setChecked(state6);
-                            switchnight2mon.setChecked(state7);
-                            switchnight3mon.setChecked(state8);
-                            switchnight4mon.setChecked(state9);
-                            switchnight5mon.setChecked(state10);
+                            day1mon.setText(time10);
+                            day2mon.setText(time9);
+                            day3mon.setText(time8);
+                            day4mon.setText(time7);
+                            day5mon.setText(time6);
+                            switchday1mon.setChecked(state10);
+                            switchday2mon.setChecked(state9);
+                            switchday3mon.setChecked(state8);
+                            switchday4mon.setChecked(state7);
+                            switchday5mon.setChecked(state6);
+                            night1mon.setText(time5);
+                            night2mon.setText(time4);
+                            night3mon.setText(time3);
+                            night4mon.setText(time2);
+                            night5mon.setText(time1);
+                            switchnight1mon.setChecked(state5);
+                            switchnight2mon.setChecked(state4);
+                            switchnight3mon.setChecked(state3);
+                            switchnight4mon.setChecked(state2);
+                            switchnight5mon.setChecked(state1);
                         }
                     });
                 } catch (Exception e) {
