@@ -73,38 +73,38 @@ public class Sunday extends AppCompatActivity {
                         type = wpgm.get(i).getType();
                         if (type.equals("day")) {
                             if (days == 1) {
-                                time1 = time;
-                                state1 = state;
+                                time10 = time;
+                                state10 = state;
                             } else if (days == 2) {
-                                time2 = time;
-                                state2 = state;
+                                time9 = time;
+                                state9 = state;
                             } else if (days == 3) {
-                                time3 = time;
-                                state3 = state;
+                                time8 = time;
+                                state8 = state;
                             } else if (days == 4) {
-                                time4 = time;
-                                state4 = state;
+                                time7 = time;
+                                state7 = state;
                             } else if (days == 5) {
-                                time5 = time;
-                                state5 = state;
+                                time6 = time;
+                                state6 = state;
                             }
                             days++;
                         } else if (type.equals("night")) {
                             if (nights == 1) {
-                                time6 = time;
-                                state6 = state;
+                                time5 = time;
+                                state5 = state;
                             } else if (nights == 2) {
-                                time7 = time;
-                                state7 = state;
+                                time4 = time;
+                                state4 = state;
                             } else if (nights == 3) {
-                                time8 = time;
-                                state8 = state;
+                                time3 = time;
+                                state3 = state;
                             } else if (nights == 4) {
-                                time9 = time;
-                                state9 = state;
+                                time2 = time;
+                                state2 = state;
                             } else if (nights == 5) {
-                                time10 = time;
-                                state10 = state;
+                                time1 = time;
+                                state1 = state;
                             }
                             nights++;
                         }

@@ -191,7 +191,7 @@ public class ThermostatOverview extends AppCompatActivity {
         Button bplus = (Button) findViewById(R.id.bplus);
         bplus.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
                 // values to rewrite temp to display format
                 stemp = (stemp + 1);
                 int number = stemp / 10;
@@ -225,6 +225,7 @@ public class ThermostatOverview extends AppCompatActivity {
                                 HeatingSystem.put("targetTemperature", tserver);
                             } catch (Exception e) {
                                 System.err.println("Error from getdata " + e);
+
                             }
                         }
                     }).start();
@@ -239,7 +240,7 @@ public class ThermostatOverview extends AppCompatActivity {
         Button bminus = (Button) findViewById(R.id.bminus);
         bminus.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick( final View view) {
                 stemp = (stemp - 1);
                 if (stemp < 50) {
                     freeze(view);
@@ -256,6 +257,7 @@ public class ThermostatOverview extends AppCompatActivity {
                             HeatingSystem.put("targetTemperature", tserver);
                         } catch (Exception e) {
                             System.err.println("Error from getdata " + e);
+
                         }
                     }
                 }).start();
@@ -276,7 +278,7 @@ public class ThermostatOverview extends AppCompatActivity {
         bweekprogram.setOnClickListener(new View.OnClickListener() {
             @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
                 if (on == false) {                                                // current state of week program is off
                     new Thread(new Runnable() {
                         @Override
