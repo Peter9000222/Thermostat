@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/gradientday"
+    android:background="@drawable/background2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -38,12 +38,7 @@
         android:text="Temperature setting is:"
         android:id="@+id/textView2" />
 
-    <Button
-        android:layout_marginTop="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/textView2"
-        style="@style/buttontempplus"
-        android:id="@+id/bplus" />
+
 
     <TextView
         android:layout_centerVertical="true"
@@ -53,8 +48,19 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="20,0 &#x2103;"
         android:textColor="#ffffff"
+        android:shadowColor="#1F6A7A"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1"
         android:textSize="100dp"
         android:id="@+id/temp" />
+
+    <Button
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/temp"
+        style="@style/buttontempplus"
+        android:id="@+id/bplus" />
 
     <Button
         android:layout_marginTop="20dp"
@@ -80,9 +86,8 @@
 
     <TextView
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="47dp"
         android:layout_below="@id/tempbar"
-        android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24dp"
@@ -92,12 +97,17 @@
 
     <TextView
         android:layout_marginTop="30dp"
+        android:layout_marginLeft="5dp"
         android:layout_below="@id/tempbar"
         android:layout_toRightOf="@id/currentTempText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24dp"
         android:textColor="#ffffff"
+        android:shadowColor="#1F6A7A"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1"
         android:id="@+id/currentTime"/>
 
     <TextView
@@ -109,6 +119,10 @@
         android:layout_height="wrap_content"
         android:textSize="24dp"
         android:textColor="#ffffff"
+        android:shadowColor="#1F6A7A"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1"
         android:id="@+id/degree"
         android:text="°C"/>
 
