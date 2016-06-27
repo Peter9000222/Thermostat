@@ -19,7 +19,7 @@
             android:textAlignment="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#ffffff"
+            android:textColor="#1F6A7A"
             android:textSize="30dp"
             android:text="Set the Friday program."
             android:id="@+id/textView" />

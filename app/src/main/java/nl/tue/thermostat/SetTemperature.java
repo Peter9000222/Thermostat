@@ -35,33 +35,25 @@ public class SetTemperature extends AppCompatActivity {
 
         daytemp = (EditText) findViewById(R.id.daytemp);
         nighttemp = (EditText) findViewById(R.id.nighttemp);
-        //getDayTemp = "";
-        //getNightTemp = "";
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     getDayTemp  = HeatingSystem.get("dayTemperature");
-                    daytemp.setText(getDayTemp);
-                    System.out.println(getDayTemp);
-                   // getNightTemp = HeatingSystem.get("nightTemperature");
-                   // nighttemp.setText(getNightTemp);
-                   // System.out.println(getNightTemp);
-                } catch (Exception e) {                                         // catch error, always add this !!
-                    System.err.println("Error from getdata "+e);
-                }
-            }
-        }).start();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    //getDayTemp  = HeatingSystem.get("dayTemperature");
-                    //daytemp.setText(getDayTemp);
-                    //System.out.println(getDayTemp);
+
+
                     getNightTemp = HeatingSystem.get("nightTemperature");
-                    nighttemp.setText(getNightTemp);
-                    System.out.println(getNightTemp);
+                    daytemp.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            daytemp.setText(getDayTemp);
+                            nighttemp.setText(getNightTemp);
+                        }
+                    });
+
+
+
+                   // System.out.println(getNightTemp);
                 } catch (Exception e) {                                         // catch error, always add this !!
                     System.err.println("Error from getdata "+e);
                 }
@@ -91,29 +83,20 @@ public class SetTemperature extends AppCompatActivity {
                     public void run() {
                         try {
                             HeatingSystem.put("dayTemperature", chosenDayTemp);
-                        } catch (Exception e) {                                         // catch error, always add this !!
-                            System.err.println("Error from getdata "+e);
-                        }
-                    }
-                }).start();
-
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
                             HeatingSystem.put("nightTemperature", chosenNightTemp);
                         } catch (Exception e) {                                         // catch error, always add this !!
                             System.err.println("Error from getdata "+e);
                         }
                     }
                 }).start();
+
                 Toast.makeText(getApplicationContext(),
                         "Temperatures are set.", Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    // burn message
+    // invalid input message
     public void invalidInput(View view, String invalid) {
         AlertDialog.Builder invalidInput = new AlertDialog.Builder(this);
         invalidInput.setMessage("Invalid input for " + invalid + " temperature!! " +
