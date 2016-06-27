@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="nl.tue.thermostat.Monday"
     android:orientation="vertical"
-    android:background="@drawable/gradientday"
+    android:background="@drawable/background2"
     android:weightSum="11">
 
     <LinearLayout

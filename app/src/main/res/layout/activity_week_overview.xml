@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="nl.tue.thermostat.WeekOverview"
-    android:background="@drawable/gradientday"
+    android:background="@drawable/background2"
     android:orientation="vertical"
     android:weightSum="10">
 
